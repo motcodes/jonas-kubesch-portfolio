@@ -10,6 +10,7 @@ export const Image = ({
     alternativeText: string
     width: string | number
     height: string | number
+    layout?: 'fixed' | 'responsive' | 'fill' | 'intrinsic'
   }
   style?: Object
 }) => {
@@ -22,10 +23,10 @@ export const Image = ({
   return (
     <NextImage
       loader={loader}
-      layout='responsive'
+      layout={image.layout || 'intrinsic'}
       width={image.width}
       height={image.height}
-      objectFit='contain'
+      objectFit="contain"
       src={url}
       alt={alternativeText || ''}
     />

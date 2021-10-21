@@ -6,7 +6,7 @@
   "tabWidth": 2,
   "requirePragma": false,
   "insertPragma": false,
-  "jsxSingleQuote": true,
+  "jsxSingleQuote": false,
   "jsxBracketSameLine": false,
   "htmlWhitespaceSensitivity": "css",
   "embeddedLanguageFormatting": "auto",

@@ -1,23 +1,16 @@
-import App from 'next/app'
-import Head from 'next/head'
-import '../assets/css/style.css'
 import { createContext } from 'react'
-import { fetchAPI } from '../lib/api'
-import { getStrapiMedia } from '../lib/media'
+import App, { AppProps } from 'next/app'
+import Head from 'next/head'
+import { fetchAPI, getStrapiMedia, GlobalContext } from '../lib'
+import '../styles/global.scss'
 
-// Store Strapi Global object in context
-export const GlobalContext = createContext({
-  defaultSeo: {},
-  siteName: {},
-})
-
-const MyApp = ({ Component, pageProps }) => {
+function MyApp({ Component, pageProps }: AppProps) {
   const { global } = pageProps
 
   return (
     <>
       <Head>
-        <link rel='shortcut icon' href={getStrapiMedia(global.favicon)} />
+        <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} />
       </Head>
       <GlobalContext.Provider value={global}>
         <Component {...pageProps} />
@@ -30,21 +23,17 @@ const MyApp = ({ Component, pageProps }) => {
 // have getStaticProps. So article, category and home pages still get SSG.
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
-// MyApp.getInitialProps = async (ctx) => {
-//   // Calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(ctx)
-//   // Fetch global site settings from Strapi
-//   const global = await fetchAPI("/global")
-//   // Pass the data to our page via props
-//   return { ...appProps, pageProps: { global } }
-// }
 MyApp.getInitialProps = async (ctx) => {
-  // Calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(ctx)
-  // Fetch global site settings from Strapi
   const global = await fetchAPI('/global')
-  // Pass the data to our page via props
-  return { ...appProps, pageProps: { global } }
+  const { links } = await fetchAPI('/social-media-links')
+  return {
+    ...appProps,
+    pageProps: {
+      global,
+      socialLinks: links,
+    },
+  }
 }
 
 export default MyApp

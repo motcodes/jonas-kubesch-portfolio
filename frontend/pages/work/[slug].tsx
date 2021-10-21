@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import Moment from 'react-moment'
 import { fetchAPI } from '../../lib/api'
-import { Layout } from '../../components/layout'
+import { Layout } from '../../components/layout/layout'
 import { Image } from '../../components/image'
 import { Seo } from '../../components/seo'
 import { getStrapiMedia } from '../../lib/media'
@@ -19,23 +19,23 @@ const Article = ({ article }) => {
   return (
     <Layout>
       <Seo seo={seo} />
-      <div id='banner' className='' data-src={imageUrl} data-srcset={imageUrl}>
+      <div id="banner" className="" data-src={imageUrl} data-srcset={imageUrl}>
         <h1>{article.title}</h1>
       </div>
-      <div className=''>
-        <div className=''>
+      <div className="">
+        <div className="">
           <ReactMarkdown source={article.content} escapeHtml={false} />
-          <hr className='' />
-          <div className=''>
+          <hr className="" />
+          <div className="">
             <div>
               {article.author.picture && (
                 <Image image={article.author.picture} />
               )}
             </div>
-            <div className=''>
-              <p className=''>By {article.author.name}</p>
-              <p className=''>
-                <Moment format='MMM Do YYYY'>{article.published_at}</Moment>
+            <div className="">
+              <p className="">By {article.author.name}</p>
+              <p className="">
+                <Moment format="MMM Do YYYY">{article.published_at}</Moment>
               </p>
             </div>
           </div>

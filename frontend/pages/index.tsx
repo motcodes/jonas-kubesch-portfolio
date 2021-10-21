@@ -1,32 +1,24 @@
-import { Articles } from '../components/articles'
-import { Layout } from '../components/layout'
+import { Layout } from '../components/layout/layout'
 import { Seo } from '../components/seo'
-import { fetchAPI } from '../lib/api'
+import { fetchAPI } from '../lib'
+import style from '../styles/home.module.scss'
 
-const Home = ({ articles, categories, homepage }) => {
+const Home = ({ homepage, socialLinks }) => {
   return (
-    <Layout>
+    <Layout socialLinks={socialLinks}>
       <Seo seo={homepage.seo} />
-      <div className='uk-section'>
-        <div className='uk-container uk-container-large'>
-          <h1>{homepage.hero.title}</h1>
-          <Articles articles={articles} />
-        </div>
+      <div className={style.container}>
+        <h1>{homepage.hero.title}</h1>
       </div>
     </Layout>
   )
 }
 
 export async function getStaticProps() {
-  // Run API calls in parallel
-  const [articles, categories, homepage] = await Promise.all([
-    fetchAPI('/articles'),
-    fetchAPI('/categories'),
-    fetchAPI('/homepage'),
-  ])
+  const [homepage] = await Promise.all([fetchAPI('/homepage')])
 
   return {
-    props: { articles, categories, homepage },
+    props: { homepage },
     revalidate: 1,
   }
 }
