@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/social-media-links",
+      "handler": "social-media-links.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/social-media-links",
+      "handler": "social-media-links.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/social-media-links",
+      "handler": "social-media-links.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

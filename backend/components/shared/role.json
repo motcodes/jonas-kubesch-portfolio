@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_roles",
+  "info": {
+    "name": "Role",
+    "icon": "chess-knight"
+  },
+  "options": {},
+  "attributes": {
+    "role": {
+      "type": "string"
+    }
+  }
+}

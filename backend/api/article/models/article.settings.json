@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "project",
   "info": {
-    "name": "article",
+    "name": "Projects",
     "description": ""
   },
   "options": {
@@ -16,10 +16,6 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "text",
-      "required": true
-    },
     "content": {
       "type": "richtext",
       "required": true
@@ -29,11 +25,7 @@
       "targetField": "title",
       "required": true
     },
-    "category": {
-      "model": "category",
-      "via": "articles"
-    },
-    "image": {
+    "media": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -45,9 +37,14 @@
       "required": true,
       "pluginOptions": {}
     },
-    "author": {
-      "via": "articles",
-      "model": "writer"
+    "Roles": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.role"
+      ]
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

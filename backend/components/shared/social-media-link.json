@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_social_media_links",
+  "info": {
+    "name": "Social Media Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "url": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "default": "https://twitter.com/..."
+    }
+  }
+}
