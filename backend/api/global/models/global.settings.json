@@ -15,17 +15,16 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
-      "required": false,
+      "required": true,
       "pluginOptions": {}
     },
     "siteName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "Amelia Voslauer"
     },
     "defaultSeo": {
       "type": "component",
@@ -42,6 +41,11 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "email": {
+      "type": "email",
+      "default": "cool.name@awesome.com",
+      "required": true
     }
   }
 }

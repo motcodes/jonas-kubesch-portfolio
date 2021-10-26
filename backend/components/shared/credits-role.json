@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_credits_roles",
+  "info": {
+    "name": "Credits Role",
+    "icon": "user-circle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Profession": {
+      "type": "string",
+      "default": "Level Designer"
+    },
+    "Name": {
+      "type": "string",
+      "default": "Amelia Voslauer"
+    }
+  }
+}
