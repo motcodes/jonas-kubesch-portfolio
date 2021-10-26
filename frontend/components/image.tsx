@@ -4,31 +4,38 @@ import NextImage from 'next/image'
 export const Image = ({
   image,
   style,
+  className,
 }: {
   image: {
     url: string
-    alternativeText: string
-    width: string | number
-    height: string | number
+    alt: string
+    width?: string | number
+    height?: string | number
     layout?: 'fixed' | 'responsive' | 'fill' | 'intrinsic'
+    objectFit?: 'contain' | 'cover' | 'initial' | 'inherit'
   }
   style?: Object
+  className?: string
 }) => {
-  const { url, alternativeText } = image
+  const { url, alt } = image
 
-  const loader = () => {
-    return getStrapiMedia(image)
+  // const loader = () => {
+  //   return getStrapiMedia(image)
+  // }
+  const loader = ({ src, width, quality }) => {
+    return `${getStrapiMedia(image)}?w=${width}&q=${quality || 90}`
   }
 
   return (
     <NextImage
+      className={className}
       loader={loader}
       layout={image.layout || 'intrinsic'}
       width={image.width}
       height={image.height}
-      objectFit="contain"
+      objectFit={image.objectFit || 'cover'}
       src={url}
-      alt={alternativeText || ''}
+      alt={alt || ''}
     />
   )
 }

@@ -11,15 +11,17 @@ interface ILogo {
 export function Logo({ size = 64, footer = false, className }: ILogo) {
   const { logo, siteName } = useContext(GlobalContext)
 
-  const logoImage = {
-    url: getStrapiMedia(logo),
-    alternativeText: `${siteName} logo`,
-    height: size,
-    width: size,
-  }
   return (
     <figure className={className}>
-      <Image image={logoImage} />
+      <Image
+        image={{
+          url: getStrapiMedia(logo),
+          alt: `${siteName} logo`,
+          height: size,
+          width: size,
+          layout: 'fixed',
+        }}
+      />
       {footer && (
         <figcaption>
           <h4>{siteName}</h4>

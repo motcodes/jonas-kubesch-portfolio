@@ -1,15 +1,17 @@
 import Link from 'next/link'
-import { links } from 'lib'
+import { GlobalContext, links } from 'lib'
 import { Logo } from 'utils'
 import style from '../../styles/footer.module.scss'
 import { useRouter } from 'next/dist/client/router'
+import { useContext } from 'react'
+import { ISocialLinks } from './layout'
 
 export function Footer({ socialLinks }) {
   return (
     <footer className={style.footer}>
       <FooterTop socialLinks={socialLinks} />
       <div className={style.bottom}>
-        <Logo className={style.imageContainer} footer />
+        <Logo size={48} className={style.imageContainer} footer />
         <h5>&copy; {new Date().getFullYear()}</h5>
       </div>
     </footer>
@@ -18,11 +20,12 @@ export function Footer({ socialLinks }) {
 
 const FooterTop = ({ socialLinks }) => {
   const { pathname } = useRouter()
+  const { email } = useContext(GlobalContext)
   return (
     <div className={[style.grid, style.top].join(' ')}>
       <div className={style.grid__item}>
         <p>Get in touch</p>
-        <p className={style.email}>cool.name@awesome.com</p>
+        <p className={style.email}>{email}</p>
       </div>
       <ul className={[style.grid__item, style.list].join(' ')}>
         {links.map((link) => (
@@ -40,7 +43,7 @@ const FooterTop = ({ socialLinks }) => {
         ))}
       </ul>
       <ul className={[style.grid__item, style.list].join(' ')}>
-        {socialLinks.map((link) => (
+        {socialLinks.map((link: ISocialLinks) => (
           <li key={`footer-${link.url}`} className={style.list__item}>
             <Link href={link.url}>
               <a>{link.title}</a>

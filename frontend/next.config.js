@@ -1,13 +1,13 @@
-const plugins = require("next-compose-plugins")
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
+const plugins = require('next-compose-plugins')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
 })
 
 const nextConfig = {
   webpack(config, { webpack, dev, isServer }) {
     config.plugins.push(
       new webpack.ProvidePlugin({
-        React: "react",
+        React: 'react',
       })
     )
 
@@ -17,13 +17,13 @@ const nextConfig = {
       exclude: config.exclude,
       use: [
         {
-          loader: require.resolve("url-loader"),
+          loader: require.resolve('url-loader'),
           options: {
             limit: config.inlineImageLimit,
-            fallback: require.resolve("file-loader"),
+            fallback: require.resolve('file-loader'),
             publicPath: `${config.assetPrefix}/_next/static/images/`,
-            outputPath: `${isServer ? "../" : ""}static/images/`,
-            name: "[name]-[hash].[ext]",
+            outputPath: `${isServer ? '../' : ''}static/images/`,
+            name: '[name]-[hash].[ext]',
             esModule: config.esModule || false,
           },
         },
@@ -38,6 +38,9 @@ const nextConfig = {
 
     return config
   },
+  images: {
+    domains: [process.env.STRAPI_DOMAIN, 'localhost'],
+  },
 }
 
 module.exports = plugins(
@@ -46,14 +49,14 @@ module.exports = plugins(
       {
         workboxOpts: {
           swDest: process.env.NEXT_EXPORT
-            ? "service-worker.js"
-            : "static/service-worker.js",
+            ? 'service-worker.js'
+            : 'static/service-worker.js',
           runtimeCaching: [
             {
               urlPattern: /^https?.*/,
-              handler: "NetworkFirst",
+              handler: 'NetworkFirst',
               options: {
-                cacheName: "offlineCache",
+                cacheName: 'offlineCache',
                 expiration: {
                   maxEntries: 200,
                 },
@@ -64,8 +67,8 @@ module.exports = plugins(
         async rewrites() {
           return [
             {
-              source: "/service-worker.js",
-              destination: "/_next/static/service-worker.js",
+              source: '/service-worker.js',
+              destination: '/_next/static/service-worker.js',
             },
           ]
         },

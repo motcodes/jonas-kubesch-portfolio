@@ -1,4 +1,4 @@
-export const links = [
+export const links: Array<{ title: string; url: string }> = [
   {
     title: 'Home',
     url: '/',
