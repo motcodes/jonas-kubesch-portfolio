@@ -43,13 +43,14 @@ const FooterTop = ({ socialLinks }) => {
         ))}
       </ul>
       <ul className={[style.grid__item, style.list].join(' ')}>
-        {socialLinks.map((link: ISocialLinks) => (
-          <li key={`footer-${link.url}`} className={style.list__item}>
-            <Link href={link.url}>
-              <a>{link.title}</a>
-            </Link>
-          </li>
-        ))}
+        {socialLinks &&
+          socialLinks.map((link: ISocialLinks) => (
+            <li key={`footer-${link.url}`} className={style.list__item}>
+              <Link href={link.url}>
+                <a>{link.title}</a>
+              </Link>
+            </li>
+          ))}
       </ul>
     </div>
   )
