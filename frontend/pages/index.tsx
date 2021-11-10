@@ -1,6 +1,7 @@
 import { Educations } from 'components/educations'
 import { Hero } from 'components/hero'
 import { Projects } from 'components/projects'
+import { useEffect } from 'react'
 import { Layout } from '../components/layout/layout'
 import { Seo } from '../components/seo'
 import { fetchAPI } from '../lib'

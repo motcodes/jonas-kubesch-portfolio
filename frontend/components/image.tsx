@@ -23,6 +23,7 @@ export const Image = ({
   //   return getStrapiMedia(image)
   // }
   const loader = ({ src, width, quality }) => {
+    console.log({ src })
     return `${getStrapiMedia(image)}?w=${width}&q=${quality || 90}`
   }
 

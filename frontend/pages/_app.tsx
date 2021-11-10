@@ -1,4 +1,3 @@
-import { createContext } from 'react'
 import App, { AppProps } from 'next/app'
 import Head from 'next/head'
 import { fetchAPI, getStrapiMedia, GlobalContext } from '../lib'

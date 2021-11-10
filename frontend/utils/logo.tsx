@@ -10,6 +10,7 @@ interface ILogo {
 
 export function Logo({ size = 64, footer = false, className }: ILogo) {
   const { logo, siteName } = useContext(GlobalContext)
+  console.log('getStrapiMedia(logo) :', getStrapiMedia(logo))
 
   return (
     <figure className={className}>
