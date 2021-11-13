@@ -8,7 +8,7 @@ import style from '../../styles/header.module.scss'
 
 export function Header() {
   const { pathname } = useRouter()
-  const { socialLinks } = useContext(GlobalContext)
+  const { socialLinks, email } = useContext(GlobalContext)
   const [isOpen, toggleOpen] = useState<Boolean>(false)
 
   function handleMenu() {
@@ -65,7 +65,7 @@ export function Header() {
 
         <div className={style.contact}>
           <p>Get in touch</p>
-          <p className={style.contact__email}>cool.name@awesome.com</p>
+          <p className={style.contact__email}>{email}</p>
         </div>
       </div>
     </header>
