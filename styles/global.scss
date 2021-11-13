@@ -18,6 +18,8 @@ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   font-family: 'Helvetica Neue';
+  background-color: hsla(0deg, 0%, 5%, 1);
+  color: whitesmoke;
 }
 
 /* Sections
@@ -375,7 +377,8 @@ h3 {
 
 h4 {
   margin-bottom: 0.5rem;
-  font-size: 1.563rem;
+  // font-size: 1.563rem;
+  font-size: clamp(1.125rem, 1.6vw + 0.8rem, 1.563rem);
 }
 
 h5 {

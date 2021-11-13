@@ -37,13 +37,12 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  color: black;
+  color: whitesmoke;
   text-decoration: none;
 
   &__info {
     position: relative;
     width: 100%;
-    background-color: hsla(0, 0%, 100%, 100%);
 
     &__title {
       // font-size: 3rem;
@@ -53,10 +52,10 @@
 
     &__subtitle {
       font-size: clamp(1.125rem, 1.6vw + 0.8rem, 1.563rem);
-      color: hsla(0, 0%, 30%, 100%);
+      color: hsla(0, 0%, 70%, 100%);
     }
     &__date {
-      color: hsla(0, 0%, 30%, 100%);
+      color: hsla(0, 0%, 70%, 100%);
     }
   }
 

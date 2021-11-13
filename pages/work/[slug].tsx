@@ -29,8 +29,6 @@ const Project = ({ data, global }) => {
   }
 
   const formattedDate = Intl.DateTimeFormat('en-US', {
-    day: '2-digit',
-    month: 'long',
     year: 'numeric',
   }).format(Date(projectdate))
 
@@ -59,14 +57,16 @@ const Project = ({ data, global }) => {
               </>
             )}
           </h4>
-          <h4>
-            Project Link &#10041;{' '}
-            <Link href={projectlink}>
-              <a target="_blank" rel="noopener">
-                {projectlinkname}
-              </a>
-            </Link>
-          </h4>
+          {projectlink && (
+            <h4>
+              Project Link &#10041;{' '}
+              <Link href={projectlink}>
+                <a target="_blank" rel="noopener">
+                  {projectlinkname}
+                </a>
+              </Link>
+            </h4>
+          )}
           <h4>
             Project Year &#10041; <span>{formattedDate}</span>
           </h4>

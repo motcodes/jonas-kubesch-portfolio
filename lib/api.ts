@@ -1,14 +1,13 @@
-import { accessToken } from 'prismicConfiguration'
+import { accessToken, graphqlEndpoint } from 'prismicConfiguration'
 import Client from './prismicHelper'
-
-const GRAPHQL_API_URL = `https://${process.env.PRISMIC_REPO_NAME}.cdn.prismic.io/graphql`
 
 // @ts-ignore
 export async function fetchApi(query: string, { variables } = {}) {
   const prismicAPI = await Client().getApi()
   const fetchURL = variables?.slug
-    ? `${GRAPHQL_API_URL}?query=${query}&variables=${JSON.stringify(variables)}`
-    : `${GRAPHQL_API_URL}?query=${query}`
+    ? `${graphqlEndpoint}?query=${query}&variables=${JSON.stringify(variables)}`
+    : `${graphqlEndpoint}?query=${query}`
+
   const res = await fetch(fetchURL, {
     headers: {
       'Prismic-Ref': prismicAPI.masterRef.ref,
@@ -83,12 +82,12 @@ export async function getHomepage() {
   const data = await fetchApi(
     `
     query {
-      homepage: allHomepaes {
+      homepage: allHomepages {
         edges{
           node{
             projects {
               item {
-                ... on Projects{
+                ... on Project{
                   title
                   heroimage
                   description
@@ -100,7 +99,7 @@ export async function getHomepage() {
             }
             education {
               item {
-                ... on Eduction{
+                ... on Education{
                   name
                   department
                   from
@@ -118,6 +117,7 @@ export async function getHomepage() {
   const education = data.homepage.edges[0].node.education.map(
     ({ item }) => item
   )
+
   const projects = data.homepage.edges[0].node.projects.map(({ item }) => ({
     ...item,
     title: item.title[0].text,
@@ -135,7 +135,7 @@ export async function getAllProjects() {
   const data = await fetchApi(
     `
     {
-      projects: allProjectss {
+      projects: allProjects {
         edges {
           node {
             title
@@ -163,7 +163,7 @@ export async function getProject(slug) {
   const data = await fetchApi(
     `
     query ProjectWithSlug($slug: String!) {
-      project: allProjectss(uid: $slug) {
+      project: allProjects(uid: $slug) {
         edges {
           node {
             title
@@ -184,22 +184,22 @@ export async function getProject(slug) {
               name
             }
             body{
-              ...on ProjectsBodyContent {
+              ...on ProjectBodyContent {
                 primary {
                   content
                 }
               }
-              ...on ProjectsBodyImage {
+              ...on ProjectBodyImage {
                 primary {
                   image
                 }
               }
-              ...on ProjectsBodyFull_size_image{
+              ...on ProjectBodyFull_size_image{
                 primary {
                   fullsizeimage
                 }
               }
-              ...on ProjectsBodyImage_grid{
+              ...on ProjectBodyImage_grid{
                 fields{
                   image
                 }
@@ -223,14 +223,14 @@ export async function getProject(slug) {
     ...project,
     title: project.title[0].text,
     description: project.description[0].text,
-    projectlink: project.projectlink.url,
+    projectlink: project.projectlink?.url || '',
   }
 }
 
 export async function getProjectsWithSlug() {
   const data = await fetchApi(`
     {
-      projects: allProjectss {
+      projects: allProjects {
         edges{
           node{
             _meta {

@@ -36,7 +36,7 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  color: black;
+  color: whitesmoke;
   text-decoration: none;
 
   &__figure {
@@ -53,7 +53,7 @@
   &__info {
     position: relative;
     width: 100%;
-    background-color: hsla(0, 0%, 100%, 100%);
+    // background-color: hsla(0, 0%, 100%, 100%);
 
     &__title {
       // font-size: 3rem;
@@ -62,7 +62,7 @@
     }
 
     &__copy {
-      color: hsla(0, 0%, 30%, 100%);
+      color: hsla(0, 0%, 80%, 100%);
     }
   }
 

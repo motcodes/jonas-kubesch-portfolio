@@ -52,7 +52,7 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 4rem;
-  background-color: hsla(255, 100%, 90%, 100%);
+  background-color: hsla(255, 100%, 10%, 100%);
   z-index: 15;
 
   padding: 8rem 1rem 2rem;
@@ -100,7 +100,7 @@
     &__item {
       font-size: clamp(1.5rem, 5.4vw + 0.4rem, 3rem);
       a {
-        color: black;
+        color: whitesmoke;
         text-decoration: none;
       }
     }
