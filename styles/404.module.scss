@@ -1,0 +1,12 @@
+.notFound {
+  min-height: 100vh;
+  padding: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+
+  h1 {
+    font-size: clamp(3rem, 17.9vw - 0.6rem, 8rem);
+    font-weight: bold;
+  }
+}

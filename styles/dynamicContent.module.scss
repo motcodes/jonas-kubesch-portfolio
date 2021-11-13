@@ -1,0 +1,67 @@
+.content,
+.imageGrid,
+.singleImage {
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 832px;
+}
+
+.content {
+  margin-bottom: 4rem;
+  p,
+  pre {
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    font-size: 1.125rem;
+  }
+  pre {
+    font-size: 0.9rem;
+    background-color: hsla(255, 100%, 72%, 10%);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  img {
+    margin: 2rem 0;
+    position: relative;
+    width: 100%;
+  }
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 4rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.singleImage {
+  height: auto;
+  margin-bottom: 4rem;
+  display: block;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.fullsizeImage {
+  width: 100vw;
+  max-width: 1920px;
+  margin-bottom: 4rem;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "homepae",
+  "label": "Homepage",
+  "repeatable": false,
+  "json": {
+    "Main": {
+      "projects": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "item": {
+              "type": "Link",
+              "config": {
+                "select": "document",
+                "customtypes": [
+                  "projects"
+                ],
+                "label": "item"
+              }
+            }
+          },
+          "label": "Projects"
+        }
+      },
+      "education": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "item": {
+              "type": "Link",
+              "config": {
+                "select": "document",
+                "customtypes": [
+                  "eduction"
+                ],
+                "label": "Item"
+              }
+            }
+          },
+          "label": "Education"
+        }
+      }
+    }
+  },
+  "status": true
+}
