@@ -39,7 +39,7 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: [process.env.NEXT_PUBLIC_STRAPI_DOMAIN, 'localhost'],
+    domains: [process.env.PRISMIC_IMAGE_DOMAIN, 'localhost'],
   },
 }
 

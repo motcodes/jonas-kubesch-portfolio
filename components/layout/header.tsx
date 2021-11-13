@@ -53,7 +53,9 @@ export function Header() {
               {socialLinks.map((link: ILinks) => (
                 <li key={link.url} className={style.navigation__list__item}>
                   <Link href={link.url}>
-                    <a>{link.title}</a>
+                    <a target="_blank" rel="noopener noreferer">
+                      {link.title}
+                    </a>
                   </Link>
                 </li>
               ))}

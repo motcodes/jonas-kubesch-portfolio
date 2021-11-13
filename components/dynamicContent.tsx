@@ -6,7 +6,6 @@ import style from '../styles/dynamicContent.module.scss'
 import { Image } from './image'
 
 export function DynamicContent({ data }) {
-  console.log('data :', data[3].fields[0])
   return data.map((item, itemIndex) => (
     <Fragment key={`dynamic-content-${Math.random() * 100}`}>
       {/* Content - Markdown */}

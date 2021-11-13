@@ -3,8 +3,8 @@
   & > * {
     border-top: 1.5px solid hsla(0, 0%, 90%, 1);
     margin: 0 auto;
-    width: 100vw;
-    max-width: 1280px;
+    width: calc(100vw - 32px);
+    max-width: 1920px;
   }
 }
 

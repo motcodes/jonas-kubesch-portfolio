@@ -18,7 +18,6 @@ export async function fetchApi(query: string, { variables } = {}) {
   })
 
   if (res.status !== 200) {
-    console.log(await res.text())
     throw new Error('Failed to fetch API')
   }
 

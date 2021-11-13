@@ -2,7 +2,7 @@ import { GlobalContext } from 'lib'
 import { ReactNode } from 'react'
 import { Footer } from './footer'
 import { Header } from './header'
-
+import style from '../../styles/layout.module.scss'
 export const Layout = ({
   children,
   global,
@@ -11,8 +11,10 @@ export const Layout = ({
   global?: any
 }) => (
   <GlobalContext.Provider value={global}>
-    <Header />
-    <main>{children}</main>
-    <Footer />
+    <div className={style.wrapper}>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
   </GlobalContext.Provider>
 )

@@ -4,7 +4,6 @@ import style from '../styles/projects.module.scss'
 import { IProjects } from 'interfaces'
 
 export function Projects({ data }: { data: Array<IProjects> }) {
-  console.log('data :', data)
   return (
     <section className={style.projects}>
       <h2 className={style.projects__heading}>Work</h2>

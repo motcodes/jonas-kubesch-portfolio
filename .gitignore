@@ -114,4 +114,7 @@ exports
 build
 .strapi-updater.json
 .vscode/settings.json
-frontend/.env.local
+.env.development
+.env.production
+
+.env.development
