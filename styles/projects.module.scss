@@ -36,7 +36,7 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  color: whitesmoke;
+  color: var(--text);
   text-decoration: none;
 
   &__figure {
@@ -62,7 +62,7 @@
     }
 
     &__copy {
-      color: hsla(0, 0%, 80%, 100%);
+      color: var(--text);
     }
   }
 

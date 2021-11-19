@@ -37,7 +37,7 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  color: whitesmoke;
+  color: var(--text);
   text-decoration: none;
 
   &__info {
@@ -52,10 +52,10 @@
 
     &__subtitle {
       font-size: clamp(1.125rem, 1.6vw + 0.8rem, 1.563rem);
-      color: hsla(0, 0%, 70%, 100%);
+      color: var(--text-light);
     }
     &__date {
-      color: hsla(0, 0%, 70%, 100%);
+      color: var(--text-light);
     }
   }
 

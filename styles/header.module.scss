@@ -100,7 +100,7 @@
     &__item {
       font-size: clamp(1.5rem, 5.4vw + 0.4rem, 3rem);
       a {
-        color: whitesmoke;
+        color: var(--text);
         text-decoration: none;
       }
     }
