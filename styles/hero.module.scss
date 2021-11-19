@@ -3,13 +3,12 @@
   max-width: 1920px;
   min-height: 90vh;
   height: 100%;
-  position: relative;
+  // position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
-
   @media (min-width: 768px) {
     padding: 0 3rem;
   }
@@ -20,18 +19,48 @@
   inset: 0;
   display: grid;
   place-content: center;
-  font-size: 90vh;
-  line-height: 0.75;
-  color: hsla(0, 0%, 0%, 7%);
-  padding-top: 4rem;
-
+  width: 100%;
+  height: 100%;
+  z-index: 5;
   @media (min-width: 768px) {
-    font-size: 120vh;
-    padding-top: 6rem;
   }
 }
+.backgroundGradient {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 18, 22, 0) 61.88%,
+    #081216 93.34%
+  );
+  @media (min-width: 768px) {
+  }
+}
+// .backgroundPlaceholder {
+//   overflow: hidden;
+//   position: absolute;
+//   inset: 0;
+//   display: grid;
+//   place-content: center;
+//   font-size: 90vh;
+//   line-height: 0.75;
+//   color: hsla(0, 0%, 100%, 7%);
+//   padding-top: 4rem;
+
+//   @media (min-width: 768px) {
+//     font-size: 120vh;
+//     padding-top: 6rem;
+//   }
+// }
 
 .container {
+  z-index: 10;
   width: 100%;
   max-width: 1600px;
 
