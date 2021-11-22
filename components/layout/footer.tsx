@@ -24,18 +24,15 @@ const FooterTop = () => {
   return (
     <div className={`${style.grid} ${style.top}`}>
       <div className={style.grid__item}>
-        <p>Get in touch</p>
+        <p>
+          If you have a project idea in mind,
+          <br /> then let’s get in touch
+        </p>
         <p className={style.email}>{email}</p>
       </div>
       <ul className={`${style.grid__item} ${style.list}`}>
         {links.map((link) => (
-          <li
-            key={`footer-${link.url}`}
-            className={[
-              style.list__item,
-              pathname === link.url ? style.active : '',
-            ].join(' ')}
-          >
+          <li key={`footer-${link.url}`} className={style.list__item}>
             <Link href={link.url}>
               <a>{link.title}</a>
             </Link>

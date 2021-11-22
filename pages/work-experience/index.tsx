@@ -1,30 +1,30 @@
 import { Layout } from 'components/layout/layout'
-import { Projects } from 'components/projects'
+import { ProjectCard } from 'components/projectCard'
 import { Seo } from 'components/seo'
-import { getAllProjects, getGlobalData } from 'lib'
+import { getAllWork, getGlobalData } from 'lib'
 
-export default function WorkPage({ projects, global }) {
+export default function WorkPage({ work, global }) {
   const seo = {
-    metaTitle: `List of my work and projects`,
-    metaDescription: `A list of all of my work experience, case studies and projects I have done over the years.`,
+    metaTitle: `List of my work`,
+    metaDescription: `A list of all of my work experience ofer the years.`,
     article: true,
   }
 
   return (
     <Layout global={global}>
       <Seo seo={seo} />
-      <Projects data={projects} />
+      <ProjectCard data={work} heading="Work Experience" isWork />
     </Layout>
   )
 }
 
 export async function getStaticProps() {
-  const projects = await getAllProjects()
+  const work = await getAllWork()
   const { global, socialLinks } = await getGlobalData()
 
   return {
     props: {
-      projects,
+      work,
       global: {
         ...global,
         socialLinks,

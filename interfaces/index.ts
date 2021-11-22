@@ -55,9 +55,13 @@ export interface INextImage {
 export interface IProjects {
   slug: string
   title: string
-  description: string
+  roles?: string
+  jobtitle?: string
+  projectdate?: string
   image: IImage
   heroimage: IImage
+  from?: string
+  to?: string
 }
 
 export interface IGlobalContext {
@@ -81,4 +85,46 @@ export interface ILogo {
   size?: number
   footer?: Boolean
   className?: string
+}
+
+export interface IHeroImage {
+  url: string
+  alt: 'string'
+  copyright: null | string
+  dimensions: {
+    width: number
+    height: number
+  }
+  metaimage: IHeroImage
+}
+
+export interface IWorkPage {
+  title: string
+  description: string
+  heroimage: IHeroImage
+  companylink: string
+  from: string
+  to: null | string
+  jobtitle: string
+  body: []
+}
+export interface IProjectPage {
+  title: string
+  description: string
+  heroimage: IHeroImage
+  projectdate: string
+  projectlink: string
+  projectlinkname: string | null
+  roles: [
+    {
+      role: string
+    }
+  ]
+  credits: [
+    {
+      role: string
+      name: string
+    }
+  ]
+  body: []
 }

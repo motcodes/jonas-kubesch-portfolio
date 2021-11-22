@@ -1,18 +1,18 @@
 import { Education } from 'components/educations'
 import { Hero } from 'components/hero'
-import { Projects } from 'components/projects'
+import { ProjectCard } from 'components/projectCard'
 import { getGlobalData, getHomepage } from 'lib'
 import { Layout } from '../components/layout/layout'
 import { Seo } from '../components/seo'
 
 export default function Home({ homepage, global }) {
-  const { projects, education } = homepage
+  const { projects, works } = homepage
   return (
     <Layout global={global}>
       <Seo />
       <Hero />
-      <Projects data={projects} />
-      <Education data={education} />
+      <ProjectCard data={projects} />
+      <ProjectCard data={works} heading="Work Experience" isWork />
     </Layout>
   )
 }

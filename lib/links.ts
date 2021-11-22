@@ -10,7 +10,11 @@ export const links: Array<ILinks> = [
     url: '/about',
   },
   {
+    title: 'Projects',
+    url: '/projects',
+  },
+  {
     title: 'Work',
-    url: '/work',
+    url: '/work-experience',
   },
 ]

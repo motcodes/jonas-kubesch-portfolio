@@ -1,4 +1,5 @@
 export * from './api'
+export * from './getDate'
 export * from './global-context'
 export * from './links'
 export * from './queries'

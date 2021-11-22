@@ -5,15 +5,21 @@ import { Seo } from '../../components/seo'
 import { DynamicContent } from 'components/dynamicContent'
 import { Credits } from 'components/credits'
 import style from '../../styles/work.module.scss'
-import { getGlobalData, getProject, getProjectsWithSlug } from 'lib'
-import { Date } from 'prismic-reactjs'
+import { getDate, getGlobalData, getProject, getProjectsWithSlug } from 'lib'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { IGlobalContext, IProjectPage } from 'interfaces'
 
-const Project = ({ data, global }) => {
+const Project = ({
+  data,
+  global,
+}: {
+  data: IProjectPage
+  global: IGlobalContext
+}) => {
   const {
     title = '',
     description = '',
-    heroimage = { url: '' },
+    heroimage = { url: '', metaimage: { url: '' } },
     roles = [],
     projectdate = '',
     projectlink = '',
@@ -24,13 +30,11 @@ const Project = ({ data, global }) => {
   const seo = {
     metatitle: title,
     metadescription: description,
-    metaimage: heroimage.url,
+    metaimage: heroimage.metaimage.url,
     article: true,
   }
 
-  const formattedDate = Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-  }).format(Date(projectdate))
+  const formattedDate = getDate(projectdate)
 
   return (
     <Layout global={global}>
@@ -115,7 +119,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const projects = await getProjectsWithSlug()
   return {
-    paths: projects.map(({ node }) => `/work/${node._meta.uid}`) || [],
+    paths: projects.map(({ node }) => `/projects/${node._meta.uid}`) || [],
     fallback: false,
   }
 }

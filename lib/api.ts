@@ -90,20 +90,27 @@ export async function getHomepage() {
                 ... on Project{
                   title
                   heroimage
-                  description
+                  projectdate
+                  roles {
+                    role
+                  }
                   _meta {
                     uid
                   }
                 }
               }
             }
-            education {
+            works {
               item {
-                ... on Education{
-                  name
-                  department
+                ... on Work {
+                  title
+                  heroimage
                   from
                   to
+                  jobtitle
+                  _meta {
+                    uid
+                  }
                 }
               }
             }
@@ -114,19 +121,21 @@ export async function getHomepage() {
   `
   )
 
-  const education = data.homepage.edges[0].node.education.map(
-    ({ item }) => item
-  )
-
   const projects = data.homepage.edges[0].node.projects.map(({ item }) => ({
     ...item,
     title: item.title[0].text,
-    description: item.description[0].text,
+    roles: item.roles.map((r) => r.role).join(', '),
+    slug: item._meta.uid,
+  }))
+
+  const works = data.homepage.edges[0].node.works.map(({ item }) => ({
+    ...item,
+    title: item.title[0].text,
     slug: item._meta.uid,
   }))
 
   return {
-    education,
+    works,
     projects,
   }
 }
@@ -157,6 +166,35 @@ export async function getAllProjects() {
     slug: node._meta.uid,
   }))
   return projects
+}
+
+export async function getAllWork() {
+  const data = await fetchApi(
+    `
+    {
+      work: allWorks {
+        edges {
+          node {
+            title
+              heroimage
+              from
+              to
+              jobtitle
+              _meta {
+                uid
+              }
+          }
+        }
+      }
+    }
+    `
+  )
+  const work = data.work.edges.map(({ node }) => ({
+    ...node,
+    title: node.title[0].text,
+    slug: node._meta.uid,
+  }))
+  return work
 }
 
 export async function getProject(slug) {
@@ -231,6 +269,85 @@ export async function getProjectsWithSlug() {
   const data = await fetchApi(`
     {
       projects: allProjects {
+        edges{
+          node{
+            _meta {
+              uid
+            }
+          }
+        }
+      }
+    }
+  `)
+  return data.projects.edges
+}
+
+export async function getWork(slug) {
+  const data = await fetchApi(
+    `
+    query workWithSlug($slug: String!) {
+      work: allWorks(uid: $slug) {
+        edges {
+          node {
+            title
+            heroimage
+            description
+            from
+            to
+            companylink {
+              ...on _ExternalLink {
+                url
+              }
+            }
+            jobtitle
+            body{
+              ...on WorkBodyContent {
+                primary {
+                  content
+                }
+              }
+              ...on WorkBodyImage {
+                primary {
+                  image
+                }
+              }
+              ...on WorkBodyFull_size_image{
+                primary {
+                  fullsizeimage
+                }
+              }
+              ...on WorkBodyImage_grid{
+                fields{
+                  image
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        slug,
+      },
+    }
+  )
+
+  const work = data.work.edges[0].node
+
+  return {
+    ...work,
+    title: work.title[0].text,
+    description: work.description[0].text,
+    companylink: work.companylink?.url || '',
+  }
+}
+
+export async function getWorksWithSlug() {
+  const data = await fetchApi(`
+    {
+      projects: allWorks {
         edges{
           node{
             _meta {

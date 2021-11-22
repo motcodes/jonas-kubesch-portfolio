@@ -1,8 +1,12 @@
-import { useEffect } from 'react'
+import Link from 'next/link'
+import { GlobalContext } from 'lib'
+import { useContext, useEffect } from 'react'
 import { Gradient } from 'utils/Gradient'
 import style from '../styles/hero.module.scss'
+import { ILinks } from 'interfaces'
 
 export function Hero() {
+  const { metadescription, socialLinks } = useContext(GlobalContext)
   useEffect(() => {
     // Create your instance
     const gradient = new Gradient(
@@ -17,19 +21,47 @@ export function Hero() {
   }, [])
   return (
     <section className={style.hero}>
-      {/* <div className={style.backgroundPlaceholder}>M</div> */}
       <canvas
         id="gradient-canvas"
-        className={style.backgroundPlaceholder}
+        className={style.backgroundGradient}
         data-transition-in
       ></canvas>
-      <div className={style.backgroundGradient}></div>
+      <div className={style.backgroundOverlayGradient}></div>
       <div className={style.container}>
-        <h1>
-          I'm <i>baby microdosing flexitarian street</i> art pour-over
-          distillery. IPhone quinoa food truck, <b>prism snackwave</b> next
-          level farm-to-table drinking vinegar.
-        </h1>
+        <section className={style.intro}>
+          <h1>
+            Jonas
+            <br />
+            Kubesch
+          </h1>
+          <p>{metadescription}</p>
+        </section>
+        {socialLinks && (
+          <ul className={style.linkContainer}>
+            {socialLinks.map((link: ILinks) => (
+              <li key={link.url}>
+                <Link href={link.url}>
+                  <a>{link.title}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        <svg
+          width="328"
+          height="1"
+          viewBox="0 0 328 1"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            y1="0.75"
+            x2="328"
+            y2="0.75"
+            stroke="var(--offwhite)"
+            strokeWidth="0.5"
+          />
+        </svg>
       </div>
     </section>
   )

@@ -8,6 +8,7 @@ export default function About({ global }) {
       <div className={style.about}>
         <h1>About me!</h1>
       </div>
+      {/* <Education data={education} /> */}
     </Layout>
   )
 }
