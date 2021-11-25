@@ -85,6 +85,7 @@ export async function getHomepage() {
       homepage: allHomepages {
         edges{
           node{
+            description
             projects {
               item {
                 ... on Project{
@@ -135,6 +136,7 @@ export async function getHomepage() {
   }))
 
   return {
+    description: data.homepage.edges[0].node.description,
     works,
     projects,
   }
@@ -326,7 +328,7 @@ export async function getWork(slug) {
         }
       }
     }
-  `,
+    `,
     {
       variables: {
         slug,
@@ -357,6 +359,36 @@ export async function getWorksWithSlug() {
         }
       }
     }
-  `)
+    `)
   return data.projects.edges
+}
+
+export async function getAbout() {
+  const data = await fetchApi(`
+      {
+        about: allAbouts {
+          edges {
+            node {
+              image
+              content
+            }
+          }
+        }
+        education: allEducations(sortBy:from_DESC) {
+          edges {
+            node {
+              name
+              department
+              from
+              to
+            }
+          }
+        }
+      }
+    `)
+
+  return {
+    about: data.about.edges[0].node,
+    education: data.education.edges.map((i) => i.node),
+  }
 }

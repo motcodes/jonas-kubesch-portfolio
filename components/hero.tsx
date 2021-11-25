@@ -5,8 +5,9 @@ import { Gradient } from 'utils/Gradient'
 import style from '../styles/hero.module.scss'
 import { ILinks } from 'interfaces'
 
-export function Hero() {
-  const { metadescription, socialLinks } = useContext(GlobalContext)
+export function Hero({ description = '' }: { description: string }) {
+  console.log('description :', description)
+  const { socialLinks } = useContext(GlobalContext)
   useEffect(() => {
     // Create your instance
     const gradient = new Gradient(
@@ -34,7 +35,7 @@ export function Hero() {
             <br />
             Kubesch
           </h1>
-          <p>{metadescription}</p>
+          <p className={style.intro__description}>{description}</p>
         </section>
         {socialLinks && (
           <ul className={style.linkContainer}>
@@ -47,21 +48,6 @@ export function Hero() {
             ))}
           </ul>
         )}
-        <svg
-          width="328"
-          height="1"
-          viewBox="0 0 328 1"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line
-            y1="0.75"
-            x2="328"
-            y2="0.75"
-            stroke="var(--offwhite)"
-            strokeWidth="0.5"
-          />
-        </svg>
       </div>
     </section>
   )

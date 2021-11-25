@@ -1,4 +1,4 @@
-import { Dispatch } from 'react'
+import { RichTextBlock } from 'prismic-reactjs'
 
 export interface ISeo {
   metatitle?: string
@@ -127,4 +127,9 @@ export interface IProjectPage {
     }
   ]
   body: []
+}
+
+export interface IAbout {
+  image: IHeroImage
+  content: RichTextBlock[]
 }

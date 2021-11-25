@@ -67,26 +67,16 @@
   }
 
   @media (min-width: 768px) {
-    // min-height: 60vh;
     height: 100%;
-    margin: 0rem 0 8rem;
+    margin: 0rem 0 6rem;
     &__info {
-      width: 100%;
-      &__title {
-        margin-bottom: 0.5rem;
-      }
-      &__copy {
-        min-width: 600px;
-        width: 100%;
-        max-width: 50%;
-        margin-bottom: 1rem;
+      &__role,
+      &__year {
+        font-size: var(--copy-large);
       }
     }
     &__figure {
       position: relative;
-      // min-height: 400px;
-      // max-height: 480px;
-      height: clamp(22rem, 15.3vw + 14.7rem, 33rem);
       flex-grow: 1;
     }
   }

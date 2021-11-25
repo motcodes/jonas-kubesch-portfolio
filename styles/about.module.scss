@@ -1,4 +1,28 @@
 .about {
   min-height: 100vh;
-  padding: 6rem 1rem 0;
+  padding: 9rem 1.5rem 0;
+
+  h1 {
+    font-size: var(--h2);
+  }
+
+  &__figure {
+    margin-top: 0.25rem;
+  }
+
+  &__article {
+    margin: 1rem 0;
+    max-width: 50rem;
+  }
+
+  @media (min-width: 786px) {
+    padding-top: 17rem;
+    &__article {
+      margin-top: 8rem;
+      margin-bottom: 18rem;
+      p {
+        font-size: var(--copy-large);
+      }
+    }
+  }
 }

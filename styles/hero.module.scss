@@ -3,12 +3,14 @@
   max-width: 1920px;
   min-height: 90vh;
   height: 100%;
+  max-height: 512px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 1.5rem;
   @media (min-width: 768px) {
+    max-height: unset;
     padding: 0 2rem;
   }
 }
@@ -36,6 +38,8 @@
 
 .container {
   padding-top: 9rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--offwhite-90);
   z-index: 4;
   width: 100%;
   max-width: 1600px;
@@ -49,6 +53,12 @@
       font-size: clamp(3rem, 14.3vw + 0.1rem, 7rem);
       line-height: 125%;
       margin-bottom: 1rem;
+    }
+    &__description {
+      max-width: 44rem;
+      color: var(--offwhite-90);
+      font-size: var(--copy-large);
+      white-space: pre-wrap;
     }
   }
 
@@ -70,12 +80,24 @@
   }
 
   @media (min-width: 768px) {
+    padding-top: 13rem;
+    padding-bottom: 0;
+    border: 0;
     .intro {
       h1 {
         font-size: clamp(9rem, 21.4vw - 1.3rem, 18rem);
         line-height: 100%;
-        margin-bottom: 0;
+        margin-bottom: 6rem;
       }
+      &__description {
+        padding-left: 1rem;
+      }
+    }
+    .linkContainer {
+      display: none;
+    }
+    .svgLine {
+      display: none;
     }
   }
 }

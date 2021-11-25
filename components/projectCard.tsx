@@ -15,7 +15,21 @@ export function ProjectCard({
 }) {
   return (
     <section className={style.projects}>
-      <h2 className={style.projects__heading}>{heading}</h2>
+      <h2 className={style.projects__heading}>
+        {isWork ? (
+          <>
+            Work
+            <br />
+            Experience
+          </>
+        ) : (
+          <>
+            Selected
+            <br />
+            Projects
+          </>
+        )}
+      </h2>
       {data.map((item) => (
         <Link
           href={`/${isWork ? 'work-experience' : 'projects'}/${item.slug}`}

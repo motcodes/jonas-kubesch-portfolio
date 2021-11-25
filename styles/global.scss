@@ -27,8 +27,8 @@
 
   @media (min-width: 768px) {
     // --h1: 3.05rem;
-    // --h2: 2.44rem;
-    // --h3: 1.953rem;
+    --h2: clamp(3rem, 9.5vw - 1.6rem, 7rem);
+    --h3: clamp(1.75rem, 5.4vw - 0.8rem, 4rem);
 
     --copy-small: 0.9rem;
     --copy: 1rem;

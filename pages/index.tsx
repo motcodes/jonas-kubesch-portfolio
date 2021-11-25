@@ -6,11 +6,11 @@ import { Layout } from '../components/layout/layout'
 import { Seo } from '../components/seo'
 
 export default function Home({ homepage, global }) {
-  const { projects, works } = homepage
+  const { projects, works, description } = homepage
   return (
     <Layout global={global}>
       <Seo />
-      <Hero />
+      <Hero description={description} />
       <ProjectCard data={projects} />
       <ProjectCard data={works} heading="Work Experience" isWork />
     </Layout>
