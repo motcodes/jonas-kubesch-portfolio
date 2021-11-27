@@ -9,11 +9,13 @@ export default function WorkPage({ projects, global }) {
     metaDescription: `A list of all of my case studies and projects I have done over the years.`,
     article: true,
   }
+  const description =
+    'A list of all of my case studies and projects\nI have done over the years.'
 
   return (
     <Layout global={global}>
       <Seo seo={seo} />
-      <ProjectCard data={projects} />
+      <ProjectCard data={projects} variant="h1" subHeading={description} />
     </Layout>
   )
 }

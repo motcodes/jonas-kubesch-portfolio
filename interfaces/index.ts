@@ -1,4 +1,5 @@
 import { RichTextBlock } from 'prismic-reactjs'
+import { ReactElement } from 'react'
 
 export interface ISeo {
   metatitle?: string
@@ -132,4 +133,10 @@ export interface IProjectPage {
 export interface IAbout {
   image: IHeroImage
   content: RichTextBlock[]
+}
+
+export interface IHeadings {
+  variant: 'h1' | 'h2' | 'h3'
+  className: string
+  children: ReactElement
 }

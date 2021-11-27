@@ -3,7 +3,7 @@ import { Layout } from '../../components/layout/layout'
 import { Image } from '../../components/image'
 import { Seo } from '../../components/seo'
 import { DynamicContent } from 'components/dynamicContent'
-import style from '../../styles/work.module.scss'
+import style from '../../styles/projectWorkPage.module.scss'
 import { getDate, getGlobalData, getWork, getWorksWithSlug } from 'lib'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { IGlobalContext, IWorkPage } from 'interfaces'
@@ -41,23 +41,26 @@ const Project = ({
       <section className={style.hero}>
         <div className={style.hero__wrapper}>
           <h1 className={style.hero__wrapper__heading}>{title}</h1>
-          <h4>
-            <span>Role &#10041; </span>
-            <span>{jobtitle}</span>
-          </h4>
+          <h4 className={style.hero__wrapper__subheading}>{jobtitle}</h4>
           {companylink && (
-            <h4>
-              Company Link &#10041;{' '}
-              <Link href={companylink}>
-                <a target="_blank" rel="noopener">
-                  {title}
-                </a>
-              </Link>
-            </h4>
+            <Link href={companylink}>
+              <a
+                target="_blank"
+                rel="noopener"
+                className={style.hero__wrapper__link}
+              >
+                <h4 className={style.hero__wrapper__subheading}>
+                  Visite Website
+                </h4>
+              </a>
+            </Link>
           )}
-          <h4>
+          <h4 className={style.hero__wrapper__subheading}>
             <span>{formattedFromDate}</span> - <span>{formattedToDate}</span>
           </h4>
+        </div>
+        <div className={style.hero__wrapper__copy}>
+          <p className={style.hero__wrapper__copy__text}>{description}</p>
         </div>
         <figure className={style.hero__banner}>
           <Image
@@ -69,9 +72,6 @@ const Project = ({
             className={style.banner__image}
           />
         </figure>
-        <div className={style.hero__wrapper__copy}>
-          <p className={style.hero__wrapper__copy__text}>{description}</p>
-        </div>
       </section>
       <section className={style.container}>
         <article className={style.container__article}>

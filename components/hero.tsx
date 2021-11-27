@@ -1,11 +1,18 @@
 import Link from 'next/link'
 import { GlobalContext } from 'lib'
-import { useContext, useEffect } from 'react'
+import { MutableRefObject, Ref, useContext, useEffect } from 'react'
 import { Gradient } from 'utils/Gradient'
 import style from '../styles/hero.module.scss'
 import { ILinks } from 'interfaces'
+import { Cone } from './3DModels'
 
-export function Hero({ description = '' }: { description: string }) {
+export function Hero({
+  description = '',
+  heroRef,
+}: {
+  description: string
+  heroRef: Ref<HTMLElement>
+}) {
   console.log('description :', description)
   const { socialLinks } = useContext(GlobalContext)
   useEffect(() => {
@@ -21,7 +28,7 @@ export function Hero({ description = '' }: { description: string }) {
     gradient.initGradient('#gradient-canvas')
   }, [])
   return (
-    <section className={style.hero}>
+    <section ref={heroRef} id="hero" className={style.hero}>
       <canvas
         id="gradient-canvas"
         className={style.backgroundGradient}
@@ -49,6 +56,7 @@ export function Hero({ description = '' }: { description: string }) {
           </ul>
         )}
       </div>
+      {/* <Cone className={style.hero__model} /> */}
     </section>
   )
 }

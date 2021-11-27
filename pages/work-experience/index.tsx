@@ -6,14 +6,19 @@ import { getAllWork, getGlobalData } from 'lib'
 export default function WorkPage({ work, global }) {
   const seo = {
     metaTitle: `List of my work`,
-    metaDescription: `A list of all of my work experience ofer the years.`,
+    metaDescription: `A list of all of my work experience over the years.`,
     article: true,
   }
 
   return (
     <Layout global={global}>
       <Seo seo={seo} />
-      <ProjectCard data={work} heading="Work Experience" isWork />
+      <ProjectCard
+        data={work}
+        variant="h1"
+        subHeading={seo.metaDescription}
+        isWork
+      />
     </Layout>
   )
 }

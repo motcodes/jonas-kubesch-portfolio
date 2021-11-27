@@ -4,7 +4,7 @@ import { Image } from '../../components/image'
 import { Seo } from '../../components/seo'
 import { DynamicContent } from 'components/dynamicContent'
 import { Credits } from 'components/credits'
-import style from '../../styles/work.module.scss'
+import style from '../../styles/projectWorkPage.module.scss'
 import { getDate, getGlobalData, getProject, getProjectsWithSlug } from 'lib'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { IGlobalContext, IProjectPage } from 'interfaces'
@@ -27,6 +27,7 @@ const Project = ({
     body = [],
     credits = [],
   } = data
+
   const seo = {
     metatitle: title,
     metadescription: description,
@@ -42,38 +43,35 @@ const Project = ({
       <section className={style.hero}>
         <div className={style.hero__wrapper}>
           <h1 className={style.hero__wrapper__heading}>{title}</h1>
-          <h4>
+          <h4 className={style.hero__wrapper__subheading}>
             {roles.length > 1 ? (
-              <>
-                <span>Roles </span>
-                <span>&#10041; </span>
-                {roles.map(({ role }, roleIndex) => (
-                  <span key={role}>
-                    {role}
-                    {roleIndex + 1 !== roles.length && ','}{' '}
-                  </span>
-                ))}
-              </>
+              roles.map(({ role }, roleIndex) => (
+                <span key={role}>
+                  {role}
+                  {roleIndex + 1 !== roles.length && ','}{' '}
+                </span>
+              ))
             ) : (
-              <>
-                <span>Role &#10041; </span>
-                <span>{roles[0].role}</span>
-              </>
+              <span>{roles[0].role}</span>
             )}
           </h4>
+          <h4 className={style.hero__wrapper__subheading}>{formattedDate}</h4>
           {projectlink && (
-            <h4>
-              Project Link &#10041;{' '}
-              <Link href={projectlink}>
-                <a target="_blank" rel="noopener">
-                  {projectlinkname}
-                </a>
-              </Link>
-            </h4>
+            <Link href={projectlink}>
+              <a
+                target="_blank"
+                rel="noopener"
+                className={style.hero__wrapper__link}
+              >
+                <h4 className={style.hero__wrapper__subheading}>
+                  {projectlinkname || title}
+                </h4>
+              </a>
+            </Link>
           )}
-          <h4>
-            Project Year &#10041; <span>{formattedDate}</span>
-          </h4>
+        </div>
+        <div className={style.hero__wrapper__copy}>
+          <p className={style.hero__wrapper__copy__text}>{description}</p>
         </div>
         <figure className={style.hero__banner}>
           <Image
@@ -85,9 +83,6 @@ const Project = ({
             className={style.banner__image}
           />
         </figure>
-        <div className={style.hero__wrapper__copy}>
-          <p className={style.hero__wrapper__copy__text}>{description}</p>
-        </div>
       </section>
       <section className={style.container}>
         <article className={style.container__article}>
