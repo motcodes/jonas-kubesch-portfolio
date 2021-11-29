@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { GlobalContext, links, useRect } from 'lib'
-import { Logo } from 'utils'
 import { useContext, useRef } from 'react'
 import { ILinks } from 'interfaces'
 import { Torus } from 'components/3DModels'
+import { Logo } from 'utils'
+import { GlobalContext, links, useRect } from 'lib'
 import style from '../../styles/footer.module.scss'
 
 export function Footer() {
@@ -16,8 +16,8 @@ export function Footer() {
       <footer className={style.footer}>
         <Torus
           style={{
-            top: Math.floor(Math.abs(24000 / (-rectTop - 320))),
-            right: 48 + rect?.left * 0.5,
+            top: Math.floor(Math.abs(24000 / (-rectTop - 320))) || 16,
+            right: 48 + rect?.left * 0.5 || 48,
           }}
           className={style.footer__model}
         />

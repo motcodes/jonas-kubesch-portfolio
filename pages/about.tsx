@@ -1,10 +1,10 @@
+import { RichText } from 'prismic-reactjs'
 import { Pyramid } from 'components/3DModels'
 import { Education } from 'components/educations'
 import { Image } from 'components/image'
-import { Layout } from 'components/layout/layout'
+import { Layout } from 'components/layout'
 import { IAbout, IEducations, IGlobalContext } from 'interfaces'
 import { getAbout, getGlobalData } from 'lib'
-import { RichText } from 'prismic-reactjs'
 import style from '../styles/about.module.scss'
 
 export default function About({

@@ -1,6 +1,6 @@
-import { ISeo } from 'interfaces'
 import Head from 'next/head'
 import { useContext } from 'react'
+import { ISeo } from 'interfaces'
 import { GlobalContext } from '../lib'
 
 export const Seo = ({ seo }: { seo?: ISeo }) => {

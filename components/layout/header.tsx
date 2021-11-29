@@ -1,10 +1,9 @@
-import router from 'next/router'
-import { INavButton, ILinks } from 'interfaces'
-import { useContext, useEffect, useState } from 'react'
-import { useRouter } from 'next/dist/client/router'
+import router, { useRouter } from 'next/router'
 import Link from 'next/link'
-import { GlobalContext, links } from 'lib'
+import { useContext, useEffect, useState } from 'react'
 import { Logo } from 'utils'
+import { GlobalContext, links } from 'lib'
+import { INavButton, ILinks } from 'interfaces'
 import style from '../../styles/header.module.scss'
 
 export function Header() {

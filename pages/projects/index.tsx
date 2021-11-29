@@ -1,5 +1,5 @@
 import { Cube } from 'components/3DModels'
-import { Layout } from 'components/layout/layout'
+import { Layout } from 'components/layout'
 import { ProjectCard } from 'components/projectCard'
 import { Seo } from 'components/seo'
 import { getAllProjects, getGlobalData } from 'lib'

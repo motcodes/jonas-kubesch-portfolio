@@ -1,9 +1,9 @@
-import { IImage } from 'interfaces'
-import { RichText } from 'prismic-reactjs'
+/* eslint-disable jsx-a11y/alt-text */
 import { Fragment } from 'react'
-import ReactMarkdown from 'react-markdown'
-import style from '../styles/dynamicContent.module.scss'
+import { RichText } from 'prismic-reactjs'
+import { IImage } from 'interfaces'
 import { Image } from './image'
+import style from '../styles/dynamicContent.module.scss'
 
 export function DynamicContent({ data }) {
   return data.map((item, itemIndex) => (

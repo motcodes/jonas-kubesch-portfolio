@@ -1,7 +1,7 @@
-import { INextImage } from 'interfaces'
 import NextImage from 'next/image'
+import { INextImage } from 'interfaces'
 
-export const Image = ({ image, style, className }: INextImage) => {
+export const Image = ({ image, className }: INextImage) => {
   const { url, alt } = image
 
   const loader = ({ src, width, quality }) => {

@@ -12,7 +12,7 @@ export const useRect = (
       set()
       window.addEventListener(event, set, useCapture)
       return () => window.removeEventListener(event, set, useCapture)
-    }, [])
+    }, [event, useCapture])
   }
 
   useEffectInEvent('resize')

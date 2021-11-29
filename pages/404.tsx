@@ -1,7 +1,7 @@
-import { Layout } from 'components/layout/layout'
-import { getGlobalData } from 'lib'
 import { useRouter } from 'next/router'
-import { Button } from 'utils/button'
+import { Layout } from 'components/layout'
+import { getGlobalData } from 'lib'
+import { Button } from 'utils'
 import style from '../styles/404.module.scss'
 
 export default function NotFound({ global }) {

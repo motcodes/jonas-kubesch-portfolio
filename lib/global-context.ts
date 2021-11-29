@@ -1,5 +1,5 @@
-import { IGlobalContext } from 'interfaces'
 import { createContext } from 'react'
+import { IGlobalContext } from 'interfaces'
 
 export const defaultGlobalContext = {
   sitename: '',

@@ -1,11 +1,11 @@
+import { useRef } from 'react'
 import { Cone } from 'components/3DModels'
 import { Hero } from 'components/hero'
 import { ProjectCard } from 'components/projectCard'
+import { Layout } from 'components/layout'
+import { Seo } from 'components/seo'
 import { getGlobalData, getHomepage, useRect } from 'lib'
-import { useRef } from 'react'
-import { Layout } from '../components/layout/layout'
-import { Seo } from '../components/seo'
-import style from '../styles/home.module.scss'
+import style from 'styles/home.module.scss'
 
 export default function Home({ homepage, global }) {
   const { projects, works, description } = homepage
@@ -16,13 +16,15 @@ export default function Home({ homepage, global }) {
     <Layout global={global}>
       <Seo />
       <Hero heroRef={heroRef} description={description} />
-      <Cone
-        style={{
-          top: rect?.height,
-          right: 32 + rect?.left * 1.5,
-        }}
-        className={style.home__model}
-      />
+      {rect && (
+        <Cone
+          style={{
+            top: rect?.height,
+            right: 32 + rect?.left * 1.5,
+          }}
+          className={style.home__model}
+        />
+      )}
       <ProjectCard data={projects} isIndex />
       <ProjectCard data={works} isWork noBMargin />
     </Layout>

@@ -1,13 +1,13 @@
-import Link from 'next/link'
-import { Layout } from '../../components/layout/layout'
-import { Image } from '../../components/image'
-import { Seo } from '../../components/seo'
-import { DynamicContent } from 'components/dynamicContent'
-import style from '../../styles/projectWorkPage.module.scss'
-import { getDate, getGlobalData, getWork, getWorksWithSlug } from 'lib'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { IGlobalContext, IWorkPage } from 'interfaces'
+import Link from 'next/link'
+import { Layout } from 'components/layout'
+import { Image } from 'components/image'
+import { Seo } from 'components/seo'
+import { DynamicContent } from 'components/dynamicContent'
 import { Icosahedron } from 'components/3DModels'
+import { getDate, getGlobalData, getWork, getWorksWithSlug } from 'lib'
+import { IGlobalContext, IWorkPage } from 'interfaces'
+import style from 'styles/projectWorkPage.module.scss'
 
 const Project = ({
   data,

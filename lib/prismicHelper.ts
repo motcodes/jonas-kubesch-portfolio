@@ -1,10 +1,5 @@
 import Prismic from '@prismicio/client'
-import {
-  apiEndpoint,
-  accessToken,
-  linkResolver,
-  Router,
-} from '../prismicConfiguration'
+import { apiEndpoint, accessToken, Router } from '../prismicConfiguration'
 
 // -- @prismicio/client initialisation
 // Initialises the Prismic Client that's used for querying the API and passes it any query options.

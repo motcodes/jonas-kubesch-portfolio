@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import Link from 'next/link'
-import { Image } from './image'
 import { IProjects } from 'interfaces'
 import { getDate } from 'lib'
+import { Headings } from './headings'
+import { Image } from './image'
 import style from '../styles/projects.module.scss'
-import { Headings } from './Headings'
 
 export function ProjectCard({
   data,

@@ -1,14 +1,14 @@
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
-import { Layout } from '../../components/layout/layout'
-import { Image } from '../../components/image'
-import { Seo } from '../../components/seo'
+import { Layout } from 'components/layout'
+import { Image } from 'components/image'
+import { Seo } from 'components/seo'
 import { DynamicContent } from 'components/dynamicContent'
 import { Credits } from 'components/credits'
-import style from '../../styles/projectWorkPage.module.scss'
-import { getDate, getGlobalData, getProject, getProjectsWithSlug } from 'lib'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { IGlobalContext, IProjectPage } from 'interfaces'
 import { Icosahedron } from 'components/3DModels'
+import { getDate, getGlobalData, getProject, getProjectsWithSlug } from 'lib'
+import { IGlobalContext, IProjectPage } from 'interfaces'
+import style from 'styles/projectWorkPage.module.scss'
 
 const Project = ({
   data,

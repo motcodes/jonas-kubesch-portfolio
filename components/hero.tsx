@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import { GlobalContext } from 'lib'
-import { MutableRefObject, Ref, useContext, useEffect } from 'react'
-import { Gradient } from 'utils/Gradient'
-import style from '../styles/hero.module.scss'
+import { Ref, useContext, useEffect } from 'react'
 import { ILinks } from 'interfaces'
-import { Cone } from './3DModels'
+import { GlobalContext } from 'lib'
+import { Gradient } from 'utils'
+import style from '../styles/hero.module.scss'
 
 export function Hero({
   description = '',

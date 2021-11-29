@@ -1,4 +1,4 @@
-import style from '../styles/button.module.scss'
+import style from 'styles/button.module.scss'
 
 export const Button = ({
   className,
