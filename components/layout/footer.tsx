@@ -1,28 +1,40 @@
 import Link from 'next/link'
-import { GlobalContext, links } from 'lib'
+import { GlobalContext, links, useRect } from 'lib'
 import { Logo } from 'utils'
-import style from '../../styles/footer.module.scss'
-import { useRouter } from 'next/dist/client/router'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { ILinks } from 'interfaces'
+import { Torus } from 'components/3DModels'
+import style from '../../styles/footer.module.scss'
 
 export function Footer() {
+  const footerRef = useRef<HTMLElement>(null)
+  const rect = useRect(footerRef)
+  const rectTop = rect?.top
+
   return (
-    <footer className={style.footer}>
-      <FooterTop />
-      <div className={style.bottom}>
-        <Logo size={48} className={style.imageContainer} footer />
-        <h5>&copy; {new Date().getFullYear()}</h5>
-      </div>
-    </footer>
+    <>
+      <footer className={style.footer}>
+        <Torus
+          style={{
+            top: Math.floor(Math.abs(24000 / (-rectTop - 320))),
+            right: 48 + rect?.left * 0.5,
+          }}
+          className={style.footer__model}
+        />
+        <FooterTop footerRef={footerRef} />
+        <div className={style.bottom}>
+          <Logo size={48} className={style.imageContainer} footer />
+          <h5>&copy; {new Date().getFullYear()}</h5>
+        </div>
+      </footer>
+    </>
   )
 }
 
-const FooterTop = () => {
-  const { pathname } = useRouter()
+const FooterTop = ({ footerRef }) => {
   const { email, socialLinks } = useContext(GlobalContext)
   return (
-    <div className={`${style.grid} ${style.top}`}>
+    <div ref={footerRef} className={`${style.grid} ${style.top}`}>
       <div className={style.grid__item}>
         <p>
           If you have a project idea in mind,

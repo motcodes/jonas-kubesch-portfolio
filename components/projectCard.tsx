@@ -4,25 +4,27 @@ import { IProjects } from 'interfaces'
 import { getDate } from 'lib'
 import style from '../styles/projects.module.scss'
 import { Headings } from './Headings'
-import { Cone } from './3DModels'
 
 export function ProjectCard({
   data,
   subHeading = '',
   isWork = false,
   isIndex = false,
+  noBMargin = false,
   variant = 'h2',
 }: {
   data: Array<IProjects>
   subHeading?: string
   isWork?: boolean
   isIndex?: boolean
+  noBMargin?: boolean
   variant?: 'h1' | 'h2' | 'h3'
 }) {
   return (
     <section
       id="projectCard"
-      className={`${style.projects}  ${isIndex && style.projects__isIndex}`}
+      className={`${style.projects} ${isIndex ? style.projects__isIndex : ''} 
+      ${noBMargin ? style.projects__noBMargin : ''}`}
     >
       <div className={style.projects__intro}>
         <Headings variant={variant} className={style.projects__intro__heading}>

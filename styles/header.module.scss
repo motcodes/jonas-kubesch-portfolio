@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 1920px;
   padding: 1.5rem;
-  z-index: 10;
+  z-index: 20;
 
   .logoContainer {
     z-index: 12;
@@ -93,11 +93,11 @@
     display: flex;
     flex-direction: column;
     list-style: none;
-    gap: 1rem;
+    gap: clamp(0.75rem, 0.9vw + 0.6rem, 1rem);
     padding: 0;
 
     &__item {
-      font-size: clamp(1.5rem, 5.4vw + 0.4rem, 3rem);
+      font-size: clamp(1.25rem, 6.3vw + 0rem, 3rem);
       a {
         color: var(--text);
         font-family: var(--heading-font);

@@ -1,7 +1,9 @@
+import { Cube } from 'components/3DModels'
 import { Layout } from 'components/layout/layout'
 import { ProjectCard } from 'components/projectCard'
 import { Seo } from 'components/seo'
 import { getAllProjects, getGlobalData } from 'lib'
+import style from '../../styles/projects.module.scss'
 
 export default function WorkPage({ projects, global }) {
   const seo = {
@@ -15,7 +17,10 @@ export default function WorkPage({ projects, global }) {
   return (
     <Layout global={global}>
       <Seo seo={seo} />
-      <ProjectCard data={projects} variant="h1" subHeading={description} />
+      <div className={style.pageWrapper}>
+        <Cube className={style.pageWrapper__model} />
+        <ProjectCard data={projects} variant="h1" subHeading={description} />
+      </div>
     </Layout>
   )
 }

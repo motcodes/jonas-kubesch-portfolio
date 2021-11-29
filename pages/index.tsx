@@ -11,7 +11,6 @@ export default function Home({ homepage, global }) {
   const { projects, works, description } = homepage
   const heroRef = useRef<HTMLElement>(null)
   const rect = useRect(heroRef)
-  console.log(rect)
 
   return (
     <Layout global={global}>
@@ -20,12 +19,12 @@ export default function Home({ homepage, global }) {
       <Cone
         style={{
           top: rect?.height,
-          right: 32 + rect?.left,
+          right: 32 + rect?.left * 1.5,
         }}
         className={style.home__model}
       />
       <ProjectCard data={projects} isIndex />
-      <ProjectCard data={works} isWork />
+      <ProjectCard data={works} isWork noBMargin />
     </Layout>
   )
 }

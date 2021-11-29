@@ -7,6 +7,7 @@ import style from '../../styles/projectWorkPage.module.scss'
 import { getDate, getGlobalData, getWork, getWorksWithSlug } from 'lib'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { IGlobalContext, IWorkPage } from 'interfaces'
+import { Icosahedron } from 'components/3DModels'
 
 const Project = ({
   data,
@@ -39,6 +40,7 @@ const Project = ({
     <Layout global={global}>
       <Seo seo={seo} />
       <section className={style.hero}>
+        <Icosahedron className={style.hero__model} />
         <div className={style.hero__wrapper}>
           <h1 className={style.hero__wrapper__heading}>{title}</h1>
           <h4 className={style.hero__wrapper__subheading}>{jobtitle}</h4>

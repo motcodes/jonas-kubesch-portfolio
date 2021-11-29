@@ -1,13 +1,30 @@
 .about {
+  position: relative;
   min-height: 100vh;
   padding: 9rem 1.5rem 0;
+  padding-top: clamp(9rem, 11.4vw + 6.7rem, 17rem);
+  &__model {
+    position: absolute;
+    // width: clamp(7rem, 12.9vw + 4.4rem, 16rem);
+    width: clamp(7rem, 25.7vw + 1.9rem, 25rem);
+    height: auto;
+    z-index: 1;
+    // top: calc(0px - 7rem);
+    top: clamp(6rem, 4.3vw + 5.1rem, 9rem);
+    right: clamp(2.5rem, 12.5vw + 0rem, 15rem);
+    border: none;
+  }
 
-  h1 {
+  &__heading {
     font-size: var(--h2);
+    z-index: 5;
   }
 
   &__figure {
     margin-top: 0.25rem;
+    img {
+      z-index: 5;
+    }
   }
 
   &__article {
@@ -16,7 +33,7 @@
   }
 
   @media (min-width: 786px) {
-    padding-top: 17rem;
+    // padding-top: 17rem;
     &__article {
       margin-top: 8rem;
       margin-bottom: 18rem;

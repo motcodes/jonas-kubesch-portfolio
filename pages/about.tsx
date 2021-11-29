@@ -1,3 +1,4 @@
+import { Pyramid } from 'components/3DModels'
 import { Education } from 'components/educations'
 import { Image } from 'components/image'
 import { Layout } from 'components/layout/layout'
@@ -18,7 +19,8 @@ export default function About({
   return (
     <Layout global={global}>
       <div className={style.about}>
-        <h1>
+        <Pyramid className={style.about__model} />
+        <h1 className={style.about__heading}>
           Want to know
           <br />
           more?

@@ -1,5 +1,6 @@
+import router from 'next/router'
 import { INavButton, ILinks } from 'interfaces'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 import { GlobalContext, links } from 'lib'
@@ -20,6 +21,21 @@ export function Header() {
       htmlEl.classList.add('noScrollY')
     }
   }
+
+  useEffect(() => {
+    const handleRouteChange = (url, { shallow }) => {
+      const htmlEl = document.getElementsByTagName('html')[0]
+      htmlEl.classList.remove('noScrollY')
+    }
+
+    router.events.on('routeChangeStart', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
+    }
+  }, [])
 
   return (
     <header className={style.header}>

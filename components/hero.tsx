@@ -13,7 +13,6 @@ export function Hero({
   description: string
   heroRef: Ref<HTMLElement>
 }) {
-  console.log('description :', description)
   const { socialLinks } = useContext(GlobalContext)
   useEffect(() => {
     // Create your instance
