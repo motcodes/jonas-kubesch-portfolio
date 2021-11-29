@@ -5,11 +5,11 @@ export function Credits({ data }) {
   return (
     <div className={style.credits}>
       <h3>Credits</h3>
-      <div className={style.gridContainer}>
+      <div className={style.credits__grid}>
         {data.map((item: ICredits) => (
-          <div className={style.item} key={item.role}>
-            <p className={style.item__profession}>{item.role}</p>
-            <p className={style.item__name}>{item.name}</p>
+          <div className={style.credits__grid__item} key={item.role}>
+            <p className={style.credits__grid__item__profession}>{item.role}</p>
+            <p className={style.credits__grid__item__name}>{item.name}</p>
           </div>
         ))}
       </div>

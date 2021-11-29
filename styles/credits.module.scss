@@ -3,16 +3,21 @@
   padding: 0 1rem;
   width: 100%;
   max-width: 832px;
-}
-.gridContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 
-.item {
-  &__profession {
-    font-weight: bold;
-    font-family: var(--heading-font);
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      padding-left: 4px;
+    }
+
+    &__item {
+      &__profession {
+        font-weight: bold;
+        font-family: var(--heading-font);
+      }
+    }
   }
 }
