@@ -6,11 +6,14 @@ import { Layout } from 'components/layout'
 import { Seo } from 'components/seo'
 import { getGlobalData, getHomepage, useRect } from 'lib'
 import style from 'styles/home.module.scss'
+import { useFloatingAnimation } from 'lib'
 
 export default function Home({ homepage, global }) {
   const { projects, works, description } = homepage
+  const coneRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLElement>(null)
   const rect = useRect(heroRef)
+  useFloatingAnimation({ ref: coneRef, isScaling: true })
 
   return (
     <Layout global={global}>
@@ -18,15 +21,17 @@ export default function Home({ homepage, global }) {
       <Hero heroRef={heroRef} description={description} />
       {rect && (
         <Cone
+          coneRef={coneRef}
           style={{
             top: rect?.height,
             right: 32 + rect?.left * 1.5,
+            scale: 0,
           }}
           className={style.home__model}
         />
       )}
       <ProjectCard data={projects} isIndex />
-      <ProjectCard data={works} isWork noBMargin />
+      <ProjectCard data={works} isIndex isWork noBMargin />
     </Layout>
   )
 }

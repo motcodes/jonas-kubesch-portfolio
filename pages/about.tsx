@@ -6,6 +6,8 @@ import { Layout } from 'components/layout'
 import { IAbout, IEducations, IGlobalContext } from 'interfaces'
 import { getAbout, getGlobalData } from 'lib'
 import style from '../styles/about.module.scss'
+import { useFloatingAnimation } from 'lib'
+import { useRef } from 'react'
 
 export default function About({
   about,
@@ -16,10 +18,12 @@ export default function About({
   education: Array<IEducations>
   global: IGlobalContext
 }) {
+  const pyramidRef = useRef<HTMLDivElement>(null)
+  useFloatingAnimation({ ref: pyramidRef, toDesktop: 10 })
   return (
     <Layout global={global}>
       <div className={style.about}>
-        <Pyramid className={style.about__model} />
+        <Pyramid pyramidRef={pyramidRef} className={style.about__model} />
         <h1 className={style.about__heading}>
           Want to know
           <br />

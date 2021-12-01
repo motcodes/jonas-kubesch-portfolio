@@ -9,6 +9,9 @@ import { Icosahedron } from 'components/3DModels'
 import { getDate, getGlobalData, getProject, getProjectsWithSlug } from 'lib'
 import { IGlobalContext, IProjectPage } from 'interfaces'
 import style from 'styles/projectWorkPage.module.scss'
+import { useFloatingAnimation } from 'lib'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 const Project = ({
   data,
@@ -38,26 +41,62 @@ const Project = ({
 
   const formattedDate = getDate(projectdate)
 
+  const icoRef = useRef<HTMLDivElement>(null)
+  useFloatingAnimation({ ref: icoRef, toDesktop: 10 })
+
+  useEffect(() => {
+    gsap.fromTo(
+      '.clip-c',
+      { y: '155%', skewY: '3deg' },
+      {
+        y: 0,
+        skewY: 0,
+        duration: 1.25,
+        delay: 0.2,
+        stagger: 0.1,
+        ease: 'power4.easeOut',
+      }
+    )
+  }, [])
+
   return (
     <Layout global={global}>
       <Seo seo={seo} />
       <section className={style.hero}>
-        <Icosahedron className={style.hero__model} />
+        <Icosahedron icosahedronRef={icoRef} className={style.hero__model} />
         <div className={style.hero__wrapper}>
-          <h1 className={style.hero__wrapper__heading}>{title}</h1>
+          <h1 className={style.hero__wrapper__heading}>
+            <span style={{ lineHeight: '100%' }} className="clip-w">
+              <span className="clip-c">{title}</span>
+            </span>
+          </h1>
           <h4 className={style.hero__wrapper__subheading}>
-            {roles.length > 1 ? (
-              roles.map(({ role }, roleIndex) => (
-                <span key={role}>
-                  {role}
-                  {roleIndex + 1 !== roles.length && ','}{' '}
+            <span style={{ lineHeight: '110%' }} className="clip-w">
+              {roles.length > 1 ? (
+                roles.map(({ role }, roleIndex) => (
+                  <span
+                    key={role}
+                    style={{ lineHeight: '125%' }}
+                    className="clip-c"
+                  >
+                    {role}
+                    {roleIndex + 1 !== roles.length && ', '}
+                  </span>
+                ))
+              ) : (
+                <span style={{ lineHeight: '125%' }} className="clip-c">
+                  {roles[0].role}
                 </span>
-              ))
-            ) : (
-              <span>{roles[0].role}</span>
-            )}
+              )}
+            </span>
           </h4>
-          <h4 className={style.hero__wrapper__subheading}>{formattedDate}</h4>
+          <h4 className={style.hero__wrapper__subheading}>
+            <span style={{ lineHeight: '110%' }} className="clip-w">
+              <span style={{ lineHeight: '120%' }} className="clip-c">
+                {formattedDate}
+              </span>
+            </span>
+          </h4>
           {projectlink && (
             <Link href={projectlink}>
               <a
@@ -65,9 +104,13 @@ const Project = ({
                 rel="noopener"
                 className={style.hero__wrapper__link}
               >
-                <h4 className={style.hero__wrapper__subheading}>
-                  {projectlinkname || title}
-                </h4>
+                <span style={{ lineHeight: '110%' }} className="clip-w">
+                  <span style={{ lineHeight: '120%' }} className="clip-c">
+                    <h4 className={style.hero__wrapper__subheading}>
+                      {projectlinkname || title}
+                    </h4>
+                  </span>
+                </span>
               </a>
             </Link>
           )}

@@ -8,6 +8,9 @@ import { Icosahedron } from 'components/3DModels'
 import { getDate, getGlobalData, getWork, getWorksWithSlug } from 'lib'
 import { IGlobalContext, IWorkPage } from 'interfaces'
 import style from 'styles/projectWorkPage.module.scss'
+import { useFloatingAnimation } from 'lib'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 const Project = ({
   data,
@@ -36,14 +39,42 @@ const Project = ({
   const formattedFromDate = getDate(from)
   const formattedToDate = getDate(to) || 'present'
 
+  const icoRef = useRef<HTMLDivElement>(null)
+  useFloatingAnimation({ ref: icoRef, toDesktop: 20 })
+
+  useEffect(() => {
+    gsap.fromTo(
+      '.clip-c',
+      { y: '155%', skewY: '3deg' },
+      {
+        y: 0,
+        skewY: 0,
+        duration: 1.25,
+        delay: 0.2,
+        stagger: 0.1,
+        ease: 'power4.easeOut',
+      }
+    )
+  }, [])
+
   return (
     <Layout global={global}>
       <Seo seo={seo} />
       <section className={style.hero}>
-        <Icosahedron className={style.hero__model} />
+        <Icosahedron icosahedronRef={icoRef} className={style.hero__model} />
         <div className={style.hero__wrapper}>
-          <h1 className={style.hero__wrapper__heading}>{title}</h1>
-          <h4 className={style.hero__wrapper__subheading}>{jobtitle}</h4>
+          <h1 className={style.hero__wrapper__heading}>
+            <span style={{ lineHeight: '100%' }} className="clip-w">
+              <span className="clip-c">{title}</span>
+            </span>
+          </h1>
+          <h4 className={`${style.hero__wrapper__subheading}`}>
+            <span style={{ lineHeight: '110%' }} className="clip-w">
+              <span style={{ lineHeight: '120%' }} className="clip-c">
+                {jobtitle}
+              </span>
+            </span>
+          </h4>
           {companylink && (
             <Link href={companylink}>
               <a
@@ -51,14 +82,23 @@ const Project = ({
                 rel="noopener"
                 className={style.hero__wrapper__link}
               >
-                <h4 className={style.hero__wrapper__subheading}>
-                  Visite Website
+                <h4 className={`${style.hero__wrapper__subheading}`}>
+                  <span style={{ lineHeight: '110%' }} className="clip-w">
+                    <span style={{ lineHeight: '120%' }} className="clip-c">
+                      Visite Website
+                    </span>
+                  </span>
                 </h4>
               </a>
             </Link>
           )}
-          <h4 className={style.hero__wrapper__subheading}>
-            <span>{formattedFromDate}</span> - <span>{formattedToDate}</span>
+          <h4 className={`${style.hero__wrapper__subheading}`}>
+            <span style={{ lineHeight: '110%' }} className="clip-w">
+              <span style={{ lineHeight: '120%' }} className="clip-c">
+                <span>{formattedFromDate}</span> -{' '}
+                <span>{formattedToDate}</span>
+              </span>
+            </span>
           </h4>
         </div>
         <div className={style.hero__wrapper__copy}>

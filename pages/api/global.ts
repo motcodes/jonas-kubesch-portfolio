@@ -1,7 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getGlobalData } from 'lib'
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function global(
+  _req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     const { global, socialLinks } = await getGlobalData()
     res.status(200).json({

@@ -1,6 +1,7 @@
 .hero,
 .backgroundGradient,
-.backgroundOverlayGradient {
+.backgroundOverlayGradient,
+.backgroundOverlayColor {
   min-height: 512px;
   height: 100%;
   max-height: 536px;
@@ -27,23 +28,15 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 1.5rem;
-  // position: relative;
-
-  // &__model {
-  //   position: absolute;
-  //   width: clamp(7rem, 12.9vw + 4.4rem, 16rem);
-  //   height: auto;
-  //   z-index: 5;
-  //   bottom: calc(0px - 8rem);
-  //   right: 10vw;
-  // }
+  overflow: hidden;
 
   @media (min-width: 768px) {
     padding: 0 2rem;
   }
 }
 .backgroundGradient,
-.backgroundOverlayGradient {
+.backgroundOverlayGradient,
+.backgroundOverlayColor {
   overflow: hidden;
   position: absolute;
   inset: 0;
@@ -55,6 +48,11 @@
 .backgroundGradient {
   z-index: 2;
 }
+.backgroundOverlayColor {
+  background-color: var(--blue-6);
+  animation: animateGradient 2.5s 0.5s ease-out forwards;
+  z-index: 4;
+}
 .backgroundOverlayGradient {
   z-index: 3;
   background: linear-gradient(
@@ -62,6 +60,17 @@
     rgba(8, 18, 22, 0) 61.88%,
     #081216 93.34%
   );
+}
+
+@keyframes animateGradient {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .container {
@@ -78,6 +87,7 @@
   margin-bottom: 1rem;
 
   .intro {
+    overflow: hidden;
     h1 {
       font-size: clamp(3rem, 14.3vw + 0.1rem, 7rem);
       line-height: 125%;

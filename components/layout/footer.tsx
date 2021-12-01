@@ -1,20 +1,25 @@
 import Link from 'next/link'
-import { useContext, useRef } from 'react'
+import { RefObject, useContext, useRef } from 'react'
 import { ILinks } from 'interfaces'
 import { Torus } from 'components/3DModels'
 import { Logo } from 'utils'
 import { GlobalContext, links, useRect } from 'lib'
 import style from '../../styles/footer.module.scss'
+import { useFloatingAnimation } from 'lib'
 
 export function Footer() {
-  const footerRef = useRef<HTMLElement>(null)
+  const torusRef = useRef<HTMLDivElement>(null)
+  const footerRef = useRef<HTMLDivElement>(null)
   const rect = useRect(footerRef)
   const rectTop = rect?.top
+
+  useFloatingAnimation({ ref: torusRef, from: 0, to: 10, toDesktop: 10 })
 
   return (
     <>
       <footer className={style.footer}>
         <Torus
+          torusRef={torusRef}
           style={{
             top: Math.floor(Math.abs(24000 / (-rectTop - 320))) || 16,
             right: 48 + rect?.left * 0.5 || 48,
@@ -31,7 +36,7 @@ export function Footer() {
   )
 }
 
-const FooterTop = ({ footerRef }) => {
+const FooterTop = ({ footerRef }: { footerRef: RefObject<HTMLDivElement> }) => {
   const { email, socialLinks } = useContext(GlobalContext)
   return (
     <div ref={footerRef} className={`${style.grid} ${style.top}`}>

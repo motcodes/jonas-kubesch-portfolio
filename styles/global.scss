@@ -466,3 +466,19 @@ figure {
   --gradient-color-3: #051b26;
   --gradient-color-4: #073040;
 }
+
+.clip-w,
+.clip-c {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.clip-w {
+  overflow: hidden;
+  line-height: 75%;
+}
+
+.clip-c {
+  // transform: translateY(120%) skewY(5deg);
+}

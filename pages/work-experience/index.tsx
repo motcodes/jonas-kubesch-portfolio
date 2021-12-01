@@ -3,6 +3,8 @@ import { Layout } from 'components/layout'
 import { ProjectCard } from 'components/projectCard'
 import { Seo } from 'components/seo'
 import { getAllWork, getGlobalData } from 'lib'
+import { useFloatingAnimation } from 'lib'
+import { useRef } from 'react'
 import style from 'styles/projects.module.scss'
 
 export default function WorkPage({ work, global }) {
@@ -11,12 +13,14 @@ export default function WorkPage({ work, global }) {
     metaDescription: `A list of all of my work experience over the years.`,
     article: true,
   }
+  const cubeRef = useRef<HTMLDivElement>(null)
+  useFloatingAnimation({ ref: cubeRef, toDesktop: 10 })
 
   return (
     <Layout global={global}>
       <Seo seo={seo} />
       <div className={style.pageWrapper}>
-        <Cube className={style.pageWrapper__model} />
+        <Cube cubeRef={cubeRef} className={style.pageWrapper__model} />
         <ProjectCard
           data={work}
           variant="h1"

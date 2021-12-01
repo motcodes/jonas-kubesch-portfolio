@@ -29,6 +29,7 @@
   z-index: 15;
 
   &__intro {
+    overflow: hidden;
     &__heading {
       font-weight: bold;
       margin: 0;

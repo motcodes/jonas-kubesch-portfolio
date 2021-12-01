@@ -25,11 +25,13 @@
     flex-direction: column;
     align-items: flex-start;
     z-index: 5;
+    overflow: hidden;
 
     &__heading {
       margin: 0;
       line-height: 100%;
       z-index: 5;
+      max-width: 75%;
     }
     &__subheading {
       font-family: var(--body-font);
@@ -63,6 +65,7 @@
     height: auto;
     aspect-ratio: 16/9;
     position: relative;
+    margin: 0 2rem;
   }
 
   @media (min-width: 768px) {
@@ -88,7 +91,7 @@
     }
 
     &__banner {
-      width: 100%;
+      width: calc(100% - 4rem);
       // height: 80vh;
       position: relative;
     }

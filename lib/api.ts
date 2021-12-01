@@ -122,18 +122,22 @@ export async function getHomepage() {
   `
   )
 
-  const projects = data.homepage.edges[0].node.projects.map(({ item }) => ({
-    ...item,
-    title: item.title[0].text,
-    roles: item.roles.map((r) => r.role).join(', '),
-    slug: item._meta.uid,
-  }))
+  const projects = data.homepage.edges[0].node.projects
+    .map(({ item }) => ({
+      ...item,
+      title: item.title[0].text,
+      roles: item.roles.map((r) => r.role).join(', '),
+      slug: item._meta.uid,
+    }))
+    .sort((a, b) => a > b)
 
-  const works = data.homepage.edges[0].node.works.map(({ item }) => ({
-    ...item,
-    title: item.title[0].text,
-    slug: item._meta.uid,
-  }))
+  const works = data.homepage.edges[0].node.works
+    .map(({ item }) => ({
+      ...item,
+      title: item.title[0].text,
+      slug: item._meta.uid,
+    }))
+    .sort((a, b) => a > b)
 
   return {
     description: data.homepage.edges[0].node.description,
@@ -146,12 +150,13 @@ export async function getAllProjects() {
   const data = await fetchApi(
     `
     {
-      projects: allProjects {
+      projects: allProjects(sortBy:projectdate_DESC) {
         edges {
           node {
             title
             heroimage
             description
+            projectdate
             _meta {
               uid
             }

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Ref, useContext, useEffect } from 'react'
+import { Ref, useContext, useEffect, useRef } from 'react'
 import { ILinks } from 'interfaces'
 import { GlobalContext } from 'lib'
 import { Gradient } from 'utils'
@@ -14,17 +14,17 @@ export function Hero({
 }) {
   const { socialLinks } = useContext(GlobalContext)
   useEffect(() => {
-    // Create your instance
     const gradient = new Gradient(
       document.querySelector('#gradient-canvas'),
       window.innerWidth,
       window.innerHeight
     )
-
-    // Call `initGradient` with the selector to your canvas
     // @ts-ignore
     gradient.initGradient('#gradient-canvas')
   }, [])
+
+  const descRef = useRef<HTMLParagraphElement>(null)
+
   return (
     <section ref={heroRef} id="hero" className={style.hero}>
       <canvas
@@ -33,6 +33,7 @@ export function Hero({
         data-transition-in
       ></canvas>
       <div className={style.backgroundOverlayGradient}></div>
+      <div className={style.backgroundOverlayColor}></div>
       <div className={style.container}>
         <section className={style.intro}>
           <h1>
@@ -40,7 +41,9 @@ export function Hero({
             <br />
             Kubesch
           </h1>
-          <p className={style.intro__description}>{description}</p>
+          <p ref={descRef} className={style.intro__description}>
+            {description}
+          </p>
         </section>
         {socialLinks && (
           <ul className={style.linkContainer}>
