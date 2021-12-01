@@ -20,10 +20,15 @@
     border-radius: 4px;
     overflow-x: auto;
   }
-  img {
+  figure {
     margin: 2rem 0;
     position: relative;
     width: 100%;
+    background-color: var(--blue-20);
+    img {
+      opacity: 0;
+      transform: scale(1.1);
+    }
   }
 
   @media (min-width: 768px) {
@@ -43,11 +48,14 @@
   // grid-template-rows: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 4rem;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  figure {
+    background-color: var(--blue-20);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+    }
   }
 }
 
@@ -56,9 +64,13 @@
   margin-bottom: 4rem;
   display: block;
   position: relative;
-  img {
-    width: 100%;
-    height: 100%;
+  figure {
+    background-color: var(--blue-20);
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
   }
 }
 .fullsizeImage {
@@ -66,9 +78,11 @@
   max-width: 1920px;
   margin-bottom: 4rem;
   position: relative;
+  background-color: var(--blue-20);
 
   img {
     width: 100%;
     height: 100%;
+    opacity: 0;
   }
 }

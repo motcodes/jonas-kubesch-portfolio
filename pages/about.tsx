@@ -1,13 +1,14 @@
 import { RichText } from 'prismic-reactjs'
 import { Pyramid } from 'components/3DModels'
 import { Education } from 'components/educations'
-import { Image } from 'components/image'
 import { Layout } from 'components/layout'
 import { IAbout, IEducations, IGlobalContext } from 'interfaces'
 import { getAbout, getGlobalData } from 'lib'
 import style from '../styles/about.module.scss'
 import { useFloatingAnimation } from 'lib'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import { AnimatedImage } from 'components/dynamicContent'
+import gsap from 'gsap'
 
 export default function About({
   about,
@@ -20,28 +21,52 @@ export default function About({
 }) {
   const pyramidRef = useRef<HTMLDivElement>(null)
   useFloatingAnimation({ ref: pyramidRef, toDesktop: 10 })
+
+  useEffect(() => {
+    gsap.fromTo(
+      '.clip-c',
+      { y: '155%', skewY: '3deg' },
+      {
+        y: 0,
+        skewY: 0,
+        duration: 1.25,
+        delay: 0.2,
+        stagger: 0.1,
+        ease: 'power4.easeOut',
+      }
+    )
+  }, [])
   return (
     <Layout global={global}>
       <div className={style.about}>
         <Pyramid pyramidRef={pyramidRef} className={style.about__model} />
         <h1 className={style.about__heading}>
-          Want to know
+          <span style={{ lineHeight: '100%' }} className="clip-w">
+            <span style={{ lineHeight: '100%' }} className="clip-c">
+              Want to know
+            </span>
+          </span>
           <br />
-          more?
+          <span style={{ lineHeight: '100%' }} className="clip-w">
+            <span style={{ lineHeight: '100%' }} className="clip-c">
+              more?
+            </span>
+          </span>
         </h1>
-        <figure className={style.about__figure}>
-          <Image
-            image={{
-              url: about.image.url,
-              alt: `A picture of Jonas Kubesch`,
-              layout: 'responsive',
-              width: about.image.dimensions.width,
-              height: about.image.dimensions.height,
-              objectFit: 'cover',
-            }}
-            className={style.about__figure__image}
-          />
-        </figure>
+        <AnimatedImage
+          idClass="about-image"
+          image={{
+            url: about.image.url,
+            alt: `A picture of Jonas Kubesch`,
+            layout: 'responsive',
+            width: about.image.dimensions.width,
+            height: about.image.dimensions.height,
+            objectFit: 'cover',
+          }}
+          className={style.about__figure}
+          itemClassName={style.about__figure__image}
+          delay={0.5}
+        />
         <article className={style.about__article}>
           <RichText render={about.content} />
         </article>

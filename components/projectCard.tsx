@@ -6,7 +6,8 @@ import { Headings } from './headings'
 import { Image } from './image'
 import style from '../styles/projects.module.scss'
 import { useRef, useEffect } from 'react'
-import gsap from 'gsap'
+import { gsap } from 'gsap'
+import useInView from 'react-cool-inview'
 
 export function ProjectCard({
   data,
@@ -86,23 +87,19 @@ export function ProjectCard({
           </h4>
         )}
       </div>
-      {data.map((item) => (
+      {data.map((item, index) => (
         <Link
           href={`/${isWork ? 'work-experience' : 'projects'}/${item.slug}`}
           key={item.slug}
         >
           <a className={style.container}>
-            <figure className={style.container__figure}>
-              <Image
-                image={{
-                  url: item.heroimage.url,
-                  alt: `${item.title} Banner`,
-                  layout: 'fill',
-                  objectFit: 'cover',
-                }}
-                className={style.container__figure__image}
-              />
-            </figure>
+            <CardImage
+              idClass={item.slug}
+              imageUrl={item.heroimage.url}
+              alt={`${item.title} Banner`}
+              className={style.container__figure}
+              itemClassName={style.container__figure__image}
+            />
             <div className={style.container__info}>
               <h3 className={style.container__info__title}>{item.title}</h3>
               <p className={style.container__info__role}>
@@ -123,5 +120,45 @@ export function ProjectCard({
         </Link>
       ))}
     </section>
+  )
+}
+
+export const CardImage = ({
+  idClass,
+  imageUrl,
+  alt,
+  className,
+  itemClassName,
+  threshold = 0.35,
+}) => {
+  const { observe } = useInView({
+    threshold: threshold,
+    onEnter: ({ unobserve }) => {
+      gsap.fromTo(
+        `.${idClass}`,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 1, ease: 'power3.easeOut' }
+      )
+      gsap.fromTo(
+        `.${idClass}`,
+        { scale: 1.1 },
+        { scale: 1, duration: 1, delay: 0.25, ease: 'power3.easeOut' }
+      )
+      unobserve()
+    },
+  })
+
+  return (
+    <figure ref={observe} className={className}>
+      <Image
+        image={{
+          url: imageUrl,
+          alt: alt,
+          layout: 'fill',
+          objectFit: 'cover',
+        }}
+        className={`${itemClassName} ${idClass}`}
+      />
+    </figure>
   )
 }

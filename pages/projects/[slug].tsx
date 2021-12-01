@@ -12,6 +12,7 @@ import style from 'styles/projectWorkPage.module.scss'
 import { useFloatingAnimation } from 'lib'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { CardImage, ProjectCard } from 'components/projectCard'
 
 const Project = ({
   data,
@@ -118,16 +119,13 @@ const Project = ({
         <div className={style.hero__wrapper__copy}>
           <p className={style.hero__wrapper__copy__text}>{description}</p>
         </div>
-        <figure className={style.hero__banner}>
-          <Image
-            image={{
-              url: heroimage.url,
-              alt: `${title} banner`,
-              layout: 'fill',
-            }}
-            className={style.banner__image}
-          />
-        </figure>
+        <CardImage
+          idClass="hero-banner"
+          imageUrl={heroimage.url}
+          alt={`${title} banner`}
+          className={style.hero__banner}
+          itemClassName={style.hero__banner__image}
+        />
       </section>
       <section className={style.container}>
         <article className={style.container__article}>
