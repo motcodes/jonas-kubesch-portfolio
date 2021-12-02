@@ -13,7 +13,7 @@ export default function Home({ homepage, global }) {
   const coneRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLElement>(null)
   const rect = useRect(heroRef)
-  useFloatingAnimation({ ref: coneRef, isScaling: true })
+  useFloatingAnimation({ ref: coneRef })
 
   return (
     <Layout global={global}>
