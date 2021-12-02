@@ -33,6 +33,7 @@ export function ProjectCard({
         y: 0,
         skewY: 0,
         duration: 1.25,
+        delay: 0.7,
         stagger: 0.2,
         ease: 'power4.easeOut',
       }
@@ -46,7 +47,7 @@ export function ProjectCard({
       {
         y: 0,
         duration: 1,
-        delay: 0.5,
+        delay: 1,
       }
     )
   }, [isIndex])

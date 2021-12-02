@@ -7,6 +7,7 @@ import { Seo } from 'components/seo'
 import { getGlobalData, getHomepage, useRect } from 'lib'
 import style from 'styles/home.module.scss'
 import { useFloatingAnimation } from 'lib'
+import AnimateInOut from 'utils/AnimateInOut'
 
 export default function Home({ homepage, global }) {
   const { projects, works, description } = homepage

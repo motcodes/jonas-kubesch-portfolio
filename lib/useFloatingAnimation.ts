@@ -1,4 +1,4 @@
-import { RefObject } from 'react'
+import { RefObject, useState } from 'react'
 import gsap from 'gsap'
 import useMedia from 'use-media'
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
@@ -20,18 +20,27 @@ export function useFloatingAnimation({
   to = 5,
   toDesktop = 20,
   duration = 3,
-  isScaling = false,
+  isScaling = true,
 }: IFloatingAnimation) {
   const isDesktop = useMedia({ minWidth: 768 })
+  const [scaling, setScaling] = useState<boolean>(isScaling)
+  const [count, setCount] = useState<number>(0)
+
   useIsomorphicLayoutEffect(() => {
-    if (isScaling && ref) {
+    let counter = 0
+    if (scaling && ref) {
       gsap.fromTo(
         ref.current,
         { scale: 0 },
-        { scale: 1, duration: 0.5, delay: 1.2 }
+        { scale: 1, duration: 0.75, delay: 1, ease: 'power.easeOut' }
       )
+      setCount(++counter)
     }
-  }, [])
+    if (count > 0) {
+      setScaling(false)
+    }
+  })
+
   useIsomorphicLayoutEffect(() => {
     gsap.fromTo(
       ref.current,

@@ -13,7 +13,13 @@ export function Footer() {
   const rect = useRect(footerRef)
   const rectTop = rect?.top
 
-  useFloatingAnimation({ ref: torusRef, from: 0, to: 10, toDesktop: 10 })
+  useFloatingAnimation({
+    ref: torusRef,
+    from: 0,
+    to: 10,
+    toDesktop: 10,
+    isScaling: false,
+  })
 
   return (
     <>

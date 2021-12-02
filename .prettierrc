@@ -7,7 +7,6 @@
   "requirePragma": false,
   "insertPragma": false,
   "jsxSingleQuote": false,
-  "jsxBracketSameLine": false,
   "htmlWhitespaceSensitivity": "css",
   "embeddedLanguageFormatting": "auto",
   "bracketSpacing": true,

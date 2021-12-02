@@ -9,6 +9,7 @@ import { useFloatingAnimation } from 'lib'
 import { useEffect, useRef } from 'react'
 import { AnimatedImage } from 'components/dynamicContent'
 import gsap from 'gsap'
+import AnimateInOut from 'utils/AnimateInOut'
 
 export default function About({
   about,
@@ -30,7 +31,7 @@ export default function About({
         y: 0,
         skewY: 0,
         duration: 1.25,
-        delay: 0.2,
+        delay: 0.7,
         stagger: 0.1,
         ease: 'power4.easeOut',
       }
