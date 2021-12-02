@@ -5,7 +5,7 @@ export const Image = ({ image, className }: INextImage) => {
   const { url, alt } = image
 
   const loader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 90}`
+    return `${src}&q=${quality || 90}`
   }
 
   return (
