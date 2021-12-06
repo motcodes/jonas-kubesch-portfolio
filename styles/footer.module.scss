@@ -80,6 +80,7 @@
 }
 
 .bottom {
+  border: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -109,5 +110,16 @@
     h5 {
       font-size: 1rem;
     }
+  }
+}
+.siteBy {
+  // border-top: 1.5px solid var(--offwhite);
+  height: auto;
+  font-size: var(--copy-small);
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+
+  a {
+    color: var(--offwhite);
   }
 }

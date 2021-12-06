@@ -102,6 +102,7 @@ export const AnimatedImage = ({
         { scale: 1.1 },
         { scale: 1, duration: 1, delay: 0.25, ease: 'power3.easeOut' }
       )
+      gsap.set(`.${idClass}`, { backgroundColor: 'var(--blue-6)' })
       unobserve()
     },
   })
