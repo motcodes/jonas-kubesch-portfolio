@@ -53,9 +53,8 @@
       text-decoration: none;
     }
 
-    &__link &__subheading {
+    &__link &__subheading > span > span {
       color: var(--offwhite);
-      text-decoration: none;
       border-bottom: 2px solid var(--offwhite);
     }
   }

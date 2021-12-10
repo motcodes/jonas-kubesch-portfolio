@@ -64,7 +64,7 @@ const Project = ({
         <Icosahedron icosahedronRef={icoRef} className={style.hero__model} />
         <div className={style.hero__wrapper}>
           <h1 className={style.hero__wrapper__heading}>
-            <span style={{ lineHeight: '100%' }} className="clip-w">
+            <span style={{ lineHeight: '120%' }} className="clip-w">
               <span className="clip-c">{title}</span>
             </span>
           </h1>
@@ -85,7 +85,7 @@ const Project = ({
                 <h4 className={`${style.hero__wrapper__subheading}`}>
                   <span style={{ lineHeight: '110%' }} className="clip-w">
                     <span style={{ lineHeight: '120%' }} className="clip-c">
-                      Visite Website
+                      Visit Website
                     </span>
                   </span>
                 </h4>
