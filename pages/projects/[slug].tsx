@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
 import { Layout } from 'components/layout'
-import { Image } from 'components/image'
 import { Seo } from 'components/seo'
 import { DynamicContent } from 'components/dynamicContent'
 import { Credits } from 'components/credits'
@@ -12,7 +11,7 @@ import style from 'styles/projectWorkPage.module.scss'
 import { useFloatingAnimation } from 'lib'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { CardImage, ProjectCard } from 'components/projectCard'
+import { CardImage } from 'components/projectCard'
 
 const Project = ({
   data,
@@ -105,13 +104,13 @@ const Project = ({
                 rel="noopener"
                 className={style.hero__wrapper__link}
               >
-                <span style={{ lineHeight: '110%' }} className="clip-w">
-                  <span style={{ lineHeight: '120%' }} className="clip-c">
-                    <h4 className={style.hero__wrapper__subheading}>
+                <h4 className={style.hero__wrapper__subheading}>
+                  <span style={{ lineHeight: '110%' }} className="clip-w">
+                    <span style={{ lineHeight: '120%' }} className="clip-c">
                       {projectlinkname || title}
-                    </h4>
+                    </span>
                   </span>
-                </span>
+                </h4>
               </a>
             </Link>
           )}
