@@ -34,7 +34,7 @@ export function Footer() {
         />
         <FooterTop footerRef={footerRef} />
         <div className={style.bottom}>
-          <Logo size={48} className={style.imageContainer} footer />
+          <Logo size={64} className={style.imageContainer} footer />
           <h5>&copy; {new Date().getFullYear()}</h5>
         </div>
         <div className={`${style.bottom} ${style.siteBy}`}>

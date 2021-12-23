@@ -7,19 +7,19 @@ export function Logo({ size = 64, footer = false, className }: ILogo) {
   const { logo, sitename } = useContext(GlobalContext)
 
   return (
-    <figure className={className} style={{ height: size }}>
+    <figure className={className} style={{ height: size + 2 }}>
       <Image
         image={{
           url: logo.url,
           alt: `${sitename} logo`,
-          height: size,
+          height: size + 2,
           width: size,
           layout: 'fixed',
         }}
       />
       {footer && (
         <figcaption>
-          <h4>{sitename}</h4>
+          <h5>{sitename}</h5>
         </figcaption>
       )}
     </figure>
