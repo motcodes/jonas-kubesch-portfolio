@@ -25,7 +25,7 @@ export default function Home({ homepage, global }) {
           style={{
             top: rect?.height,
             right: 32 + rect?.left * 1.5,
-            scale: 0,
+            // scale: 0,
           }}
           className={style.home__model}
         />

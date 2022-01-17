@@ -9,7 +9,8 @@
     position: absolute;
     // width: clamp(7rem, 12.9vw + 4.4rem, 16rem);
     width: clamp(7rem, 31.4vw + 0.7rem, 29rem);
-    height: auto;
+    height: clamp(7rem, 31.4vw + 0.7rem, 29rem);
+    // height: auto;
     z-index: 5;
     // bottom: calc(0px - 8rem);
     // top: calc(536px + 10vh);

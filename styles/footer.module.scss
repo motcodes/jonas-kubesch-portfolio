@@ -13,7 +13,7 @@
     position: absolute;
     // width: clamp(7rem, 12.9vw + 4.4rem, 16rem);
     width: clamp(7rem, 31.4vw + 0.7rem, 29rem);
-    height: auto;
+    height: clamp(7rem, 31.4vw + 0.7rem, 29rem);
     z-index: 5;
     // top: calc(0px - 7rem);
     // top: 4rem;

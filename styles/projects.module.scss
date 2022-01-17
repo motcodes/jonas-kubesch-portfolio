@@ -6,12 +6,17 @@
     position: absolute;
     // width: clamp(7rem, 12.9vw + 4.4rem, 16rem);
     width: clamp(7rem, 25.7vw + 1.9rem, 25rem);
-    height: auto;
+    height: clamp(7rem, 25.7vw + 1.9rem, 25rem);
     z-index: 1;
     // top: calc(0px - 7rem);
     top: clamp(6rem, 4.3vw + 5.1rem, 9rem);
     right: clamp(2.5rem, 12.5vw + 0rem, 15rem);
     border: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
