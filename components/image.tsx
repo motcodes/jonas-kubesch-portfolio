@@ -1,4 +1,4 @@
-import NextImage from 'next/image'
+import NextImage from 'next/legacy/image'
 import { INextImage } from 'interfaces'
 
 export const Image = ({ image, className }: INextImage) => {
@@ -13,8 +13,8 @@ export const Image = ({ image, className }: INextImage) => {
       className={className}
       loader={loader}
       layout={image.layout || 'intrinsic'}
-      width={image.width}
-      height={image.height}
+      width={image.width as number}
+      height={image.height as number}
       objectFit={image.objectFit || 'cover'}
       src={url}
       alt={alt || ''}

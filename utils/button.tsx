@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import style from 'styles/button.module.scss'
 
 export const Button = ({
@@ -6,7 +7,7 @@ export const Button = ({
   ...rest
 }: {
   className?: string
-  children: ChildNode | string
+  children: ReactNode
   [x: string]: any
 }) => {
   return (

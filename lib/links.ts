@@ -17,4 +17,8 @@ export const links: Array<ILinks> = [
     title: 'Work',
     url: '/work-experience',
   },
+  {
+    title: 'Imprint',
+    url: '/imprint',
+  },
 ]
