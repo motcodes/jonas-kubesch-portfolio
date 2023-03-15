@@ -397,3 +397,21 @@ export async function getAbout() {
     education: data.education.edges.map((i) => i.node),
   }
 }
+export async function getImprint() {
+  const data = await fetchApi(`
+  {
+    imprint: allImprints {
+      edges {
+        node {
+          title
+          body
+        }
+      }
+    }
+  }
+  `)
+
+  return {
+    imprint: data.imprint.edges[0].node,
+  }
+}

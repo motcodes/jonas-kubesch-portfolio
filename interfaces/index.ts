@@ -44,8 +44,8 @@ export interface INextImage {
   image: {
     url: string
     alt: string
-    width?: string | number
-    height?: string | number
+    width?: number
+    height?: number
     layout?: 'fixed' | 'responsive' | 'fill' | 'intrinsic'
     objectFit?: 'contain' | 'cover' | 'initial' | 'inherit'
   }
@@ -133,6 +133,10 @@ export interface IProjectPage {
 export interface IAbout {
   image: IHeroImage
   content: RichTextBlock[]
+}
+export interface IImprint {
+  title: RichTextBlock[]
+  body: RichTextBlock[]
 }
 
 export interface IHeadings {
