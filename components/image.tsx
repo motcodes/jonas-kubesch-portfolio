@@ -1,4 +1,4 @@
-import NextImage from 'next/legacy/image'
+import NextImage from 'next/image'
 import { INextImage } from 'interfaces'
 
 export const Image = ({ image, className }: INextImage) => {
