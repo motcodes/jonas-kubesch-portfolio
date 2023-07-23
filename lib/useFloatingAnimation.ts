@@ -32,7 +32,7 @@ export function useFloatingAnimation({
       gsap.fromTo(
         ref.current,
         { scale: 0 },
-        { scale: 1, duration: 0.5, delay: 1, ease: 'power4.easeOut' }
+        { scale: 1, duration: 0.5, delay: 0.2, ease: 'power4.easeOut' }
       )
       setCount(++counter)
     }
