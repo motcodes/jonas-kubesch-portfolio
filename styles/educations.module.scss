@@ -56,6 +56,9 @@
     margin-bottom: 4rem;
     &__info {
       width: 50%;
+      &__title {
+        font-size: var(--h4);
+      }
       &__subtitle,
       &__date {
         font-size: var(--copy-large);

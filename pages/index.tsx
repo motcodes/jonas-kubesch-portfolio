@@ -47,6 +47,6 @@ export async function getStaticProps() {
         socialLinks,
       },
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }

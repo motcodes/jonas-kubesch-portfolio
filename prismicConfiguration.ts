@@ -1,5 +1,5 @@
 // -- Prismic Repo Name
-const repoName = process.env.PRISMIC_REPO_NAME
+const repoName = process.env.NEXT_PUBLIC_PRISMIC_REPO_NAME
 
 // -- Prismic API endpoint
 // Determines which repository to query and fetch data from
@@ -9,7 +9,7 @@ export const graphqlEndpoint = `https://${repoName}.cdn.prismic.io/graphql`
 
 // -- Access Token if the repository is not public
 // Generate a token in your dashboard and configure it here if your repository is private
-export const accessToken = process.env.PRISMIC_API_TOKEN
+export const accessToken = process.env.NEXT_PUBLIC_PRISMIC_API_TOKEN
 
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents

@@ -27,8 +27,7 @@ export default function About({
       {
         y: 0,
         skewY: 0,
-        duration: 1.25,
-        delay: 0.2,
+        duration: 0.5,
         stagger: 0.1,
         ease: 'power4.easeOut',
       }
@@ -64,6 +63,6 @@ export async function getStaticProps() {
         socialLinks,
       },
     },
-    revalidate: 60,
+    revalidate: 86400,
   }
 }

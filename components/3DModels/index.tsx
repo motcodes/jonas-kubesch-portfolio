@@ -1,6 +1,11 @@
 import Image from 'next/image'
 import { siteUrl } from 'lib'
 import { Ref } from 'react'
+// import TorusSVG from './torus.svg'
+// import IcosahedronSVG from './icosahedron.svg'
+// import ConeSVG from './cone.svg'
+// import CubeSVG from './cube.svg'
+// import PyramidSVG from './pyramid.svg'
 
 export const Torus = ({
   torusRef,
@@ -12,7 +17,7 @@ export const Torus = ({
   style?: {}
 }) => (
   <div ref={torusRef} style={style} className={className}>
-    <Image src={`${siteUrl('/torus.svg')}`} alt="cone" layout="fill" />
+    <Image src="/torus.svg" alt="cone" layout="fill" />
   </div>
 )
 
@@ -26,7 +31,7 @@ export const Icosahedron = ({
   style?: {}
 }) => (
   <div ref={icosahedronRef} style={style} className={className}>
-    <Image src={`${siteUrl('/icosahedron.svg')}`} alt="cone" layout="fill" />
+    <Image src="/icosahedron.svg" alt="cone" layout="fill" />
   </div>
 )
 
@@ -40,7 +45,7 @@ export const Cone = ({
   style?: {}
 }) => (
   <div ref={coneRef} style={style} className={className}>
-    <Image src={`${siteUrl('/cone.svg')}`} alt="cone" layout="fill" />
+    <Image src="/cone.svg" alt="cone" layout="fill" />
   </div>
 )
 
@@ -54,7 +59,7 @@ export const Pyramid = ({
   style?: {}
 }) => (
   <div ref={pyramidRef} style={style} className={className}>
-    <Image src={`${siteUrl('/pyramid.svg')}`} alt="pyramid" layout="fill" />
+    <Image src="/pyramid.svg" alt="pyramid" layout="fill" />
   </div>
 )
 
@@ -68,6 +73,6 @@ export const Cube = ({
   style?: {}
 }) => (
   <div ref={cubeRef} style={style} className={className}>
-    <Image src={`${siteUrl('/cube.svg')}`} alt="cube" layout="fill" />
+    <Image src="/cube.svg" alt="cube" layout="fill" />
   </div>
 )

@@ -116,3 +116,4 @@ build
 .vscode/settings.json
 .env.production
 .env.development
+.env.local

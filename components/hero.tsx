@@ -42,14 +42,12 @@ export function Hero({
             Kubesch
           </h1>
           <p ref={descRef} className={style.intro__description}>
-            {description.split('\n').map((item, idx) => {
-              return (
-                <span key={idx}>
-                  {item}
-                  <br />
-                </span>
-              )
-            })}
+            {description.split('\n').map((item, idx) => (
+              <span key={idx}>
+                {item}
+                <br />
+              </span>
+            ))}
           </p>
         </section>
         {socialLinks && (

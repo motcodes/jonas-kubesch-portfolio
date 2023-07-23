@@ -5,7 +5,10 @@ export const Image = ({ image, className }: INextImage) => {
   const { url, alt } = image
 
   const loader = ({ src, width, quality }) => {
-    return `${src}&q=${quality || 90}`
+    if (src.includes('images.prismic')) {
+      return `${src}&w=${width}&q=${quality || 75}`
+    }
+    return src
   }
 
   return (

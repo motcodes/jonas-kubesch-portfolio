@@ -29,8 +29,7 @@ export default function About({
       {
         y: 0,
         skewY: 0,
-        duration: 1.25,
-        delay: 0.2,
+        duration: 0.5,
         stagger: 0.1,
         ease: 'power4.easeOut',
       }
@@ -41,14 +40,14 @@ export default function About({
       <div className={style.about}>
         <Pyramid pyramidRef={pyramidRef} className={style.about__model} />
         <h1 className={style.about__heading}>
-          <span style={{ lineHeight: '100%' }} className="clip-w">
-            <span style={{ lineHeight: '100%' }} className="clip-c">
+          <span style={{ lineHeight: '80%' }} className="clip-w">
+            <span style={{ lineHeight: '80%' }} className="clip-c">
               Want to know
             </span>
           </span>
           <br />
-          <span style={{ lineHeight: '100%' }} className="clip-w">
-            <span style={{ lineHeight: '100%' }} className="clip-c">
+          <span style={{ lineHeight: '80%' }} className="clip-w">
+            <span style={{ lineHeight: '80%' }} className="clip-c">
               more?
             </span>
           </span>
@@ -88,6 +87,6 @@ export async function getStaticProps() {
         socialLinks,
       },
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }

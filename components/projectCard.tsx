@@ -32,7 +32,7 @@ export function ProjectCard({
       {
         y: 0,
         skewY: 0,
-        duration: 1.25,
+        duration: 0.5,
         stagger: 0.2,
         ease: 'power4.easeOut',
       }
@@ -137,12 +137,12 @@ export const CardImage = ({
       gsap.fromTo(
         `.${idClass}`,
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 1, ease: 'power3.easeOut' }
+        { autoAlpha: 1, duration: 2, ease: 'power4.easeInOut' }
       )
       gsap.fromTo(
         `.${idClass}`,
         { scale: 1.1 },
-        { scale: 1, duration: 1, delay: 0.25, ease: 'power3.easeOut' }
+        { scale: 1, duration: 2, ease: 'power4.easeInOut' }
       )
       unobserve()
     },

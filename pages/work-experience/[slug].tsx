@@ -49,8 +49,7 @@ const Project = ({
       {
         y: 0,
         skewY: 0,
-        duration: 1.25,
-        delay: 0.2,
+        duration: 0.5,
         stagger: 0.1,
         ease: 'power4.easeOut',
       }
@@ -135,7 +134,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         socialLinks,
       },
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }
 
